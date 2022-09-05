@@ -1,0 +1,290 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+{% block content %}
+<!----------------Home Page Start----------------->
+<div class="cover">
+    <div class="container">
+        <!--Left side bar-->
+        <div class="left-sidebar"></div>
+
+        <!--Main Content-->
+        <div class="main-content">
+
+            <!----------------Feelings menu Start----------------->
+            <div class="feelings-menu">
+                <div class="feelings-menu-inner" id="feelings-selector">
+                    <img src="" class="fas fa-smile" alt="">
+                    <img src="" class="fas fa-grin" alt="">
+                    <img src="" class="fas fa-angry" alt="">
+                    <img src="" class="fas fa-dizzy" alt="">
+                    <img src="" class="fas fa-flushed" alt="">
+                    <img src="" class="fas fa-frown" alt="">
+                    <img src="" class="fas fa-grimace" alt="">
+                    <img src="" class="fas fa-grin-beam" alt="">
+                    <img src="" class="fas fa-grin-beam-sweat" alt="">
+                    <img src="" class="fas fa-grin-hearts" alt="">
+                    <img src="" class="fas fa-grin-squint" alt="">
+                    <img src="" class="fas fa-grin-squint-tears" alt="">
+                    <img src="" class="fas fa-grin-stars" alt="">
+                    <img src="" class="fas fa-grin-tongue" alt="">
+                    <img src="" class="fas fa-grin-tongue-wink" alt="">
+                    <img src="" class="fas fa-kiss" alt="">
+                    <img src="" class="fas fa-laugh" alt="">
+                    <img src="" class="fas fa-meh-rolling-eyes" alt="">
+                    <img src="" class="fas fa-meh-blank" alt="">
+                    <img src="" class="fas fa-sad-cry" alt="">
+                    <img src="" class="fas fa-sad-tear" alt="">
+                </div>
+            </div>
+        <!----------------Feelings menu End----------------->
+            
+            <!--------Self Post More Start-------->
+            <div class="write-post-container"> <!--Write-->
+                <div class="user-profile">
+                    <a href="http://127.0.0.1:5500/Queendom/user-profile.html">
+                        <img src="{% static 'img/profile-pic.png' %}">
+                    </a>
+                    <div>
+                        <p>Ray Cai</p>
+                        <select name="privacy" id="privacy">
+                            <option value="Public">Public</option>
+                            <option value="Privacy">Private</option>
+                        </select>
+                        
+                    </div>
+                </div>
+
+                <div class="post-input-container"> <!--Input-->
+                    <div class="title-box">
+                        <input type="text" placeholder="TITLE HERE... 0-20 words"> <!--title-->
+                    </div>
+
+                    <textarea id = "message" rows="3" placeholder="Post your ideas here..."></textarea>
+                    <div id="display_image"></div>
+                    <div class="add-post-links">
+                        <!--Icons of Post-->
+                        <input type="file" id="image_input" accept="image/png, image/jpg"  class="fas fa-camera">
+                        <a href="#"><i class="fas fa-grin-alt" onclick="feelingsMenuToggle()"> Feelings</i></a>
+                        <button class="btn">Post</button>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            <!--------Sent Post Area End-------->
+
+            <!--------Self Post More Start-------->
+            <div class="selfmore-menu">
+                <div class="selfmore-menu-inner">
+                    <div class="header">
+                            <h2>About Your Post</h2>
+                        <label for="click" class="fas fa-times" onclick="selfmoreMenuToggle()"></label>
+                    </div>
+                        <div class="line"> </div>
+                        <button type="submit" class="edit-choice">Edit</button>
+                        <button type="submit" class="privacy-choice">Privacy</button>
+                        <button type="submit" class="delect-choice">Delete</button>   
+                </div>
+            </div>
+            <!--Delect Menu Start-->
+            <div class="delect-menu">
+                <div class="delect-menu-inner">
+                    <div class="header">
+                            <h2>Delete</h2>
+                    </div>
+                        <!--<label for="click" class="fas fa-check"></label>-->
+                        
+                        <p>Are you sure you want to delete this post?</p>
+                        <button type="submit" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="delect-btn">Delete</button>
+                </div>
+            </div>
+            <!--Delect Menu Start-->
+            <!--Block Menu Start-->
+            <div class="block-menu">
+                <div class="header">
+                    <h2>More</h2>
+                    <label for="click" class="fas fa-times" onclick="blockMenuToggle()"></label>
+                </div>
+
+                <!--<label for="click" class="fas fa-check"></label>-->
+                <div class="line"> </div>
+                <h3>Privacy</h3>
+                <select name="privacy" id="privacy">
+                    <option value="Public">On</option>
+                    <option value="Privacy">Off</option>
+                </select>
+                
+            </div>
+            <!--Block Menu End-->
+            <!--------Self Post More End-------->
+
+
+            <!--------Friend Post More Start-------->
+            <div class="friendmore-menu">
+                <div class="friendmore-menu-inner">
+                    <div class="header">
+                            <h2>About Your Friend's Post</h2>
+                        <label for="click" class="fas fa-times" onclick="friendmoreMenuToggle()"></label>
+                    </div>
+                        <!--<label for="click" class="fas fa-check"></label>-->
+                        <div class="line"> </div>
+                        <button type="submit" class="report-choice">Report</button>
+                </div>
+            </div>
+            <div class="report-menu">
+                <div class="report-menu-inner">
+                    <div class="header">
+                        <h2>Report</h2>
+                        <label for="click" class="fas fa-times" onclick="reportMenuToggle()"></label>
+                    </div>
+                    <p>Why are you reporting this post?</p>
+                        <!--<label for="click" class="fas fa-check"></label>-->
+                        <div class="line"> </div>
+                        <div class="reportbtn">
+                            <button type="submit" class="report-choice-inner">It's spam</button>
+                            <button type="submit" class="report-choice-inner">Nudity or sexual activity</button>
+                            <button type="submit" class="report-choice-inner">Hate speech or symbols</button>
+                            <button type="submit" class="report-choice-inner">Violence or dangerous organizations</button>
+                            <button type="submit" class="report-choice-inner">Sale of illegal or regulated goods</button>
+                            <button type="submit" class="report-choice-inner">Bullying or harassment</button>
+                            <button type="submit" class="report-choice-inner">Intellectual property violation</button>
+                            <button type="submit" class="report-choice-inner">Suicide or self-injury</button>
+                            <button type="submit" class="report-choice-inner">Eating discorders</button>
+                            <button type="submit" class="report-choice-inner">Scam or fraud</button>
+                            <button type="submit" class="report-choice-inner">False information</button>
+                            <button type="submit" class="report-choice-inner">I just don't like it</button>
+                        </div>
+                </div>
+            </div>
+            <div class="report-success-menu">
+                <div class="report-success-inner">
+                    <div class="header">
+                        <h2>Report</h2>
+                        <label for="click" class="fas fa-times" onclick="reportsuccessMenuToggle()"></label>
+                    </div>
+                        <label for="click" class="fas fa-check"></label>
+                        <p>Thank you for letting us know :)</p>
+                        <div class="line"> </div>
+                </div>
+            </div>
+            
+            
+            
+            <!--------Friend Post More End-------->
+            
+
+            
+            <!--------All Post No.1 Start-------->
+            <div class="self-post-container">
+                <div class="post-row">
+                    <div class="user-profile">
+                        <a href="http://127.0.0.1:5500/Queendom/user-profile.html">
+                            <img src="{% static 'img/profile-pic.png' %}">
+                        </a>
+                        <div class="post-user-profile">
+                            <p>Ray Cai</p>
+                            <span>May 30 2022, 21:12 pm</span>
+                        </div>
+                    </div>
+                    <a href="#"><i class="fas fa-ellipsis-v" onclick="selfmoreMenuToggle()"></i></a>
+
+        
+                </div>
+
+                <p class="post-text">Hi everyone, I am a senior student at Queen's. 
+                We are initiating a student app. Subscribe <span>@Queendom</span> 
+                <a href="#">#Queendom</a></p>
+                <img src="{% static 'img/feed-image-1.png' %}" class="post-img">
+
+                <div class="post-row">
+                    <div class="activity-icons">
+                        <div><i class="fas fa-heart"></i></div>
+                        <div><i class="fas fa-star"></i></div>
+                        <div><i class="fas fa-share"></i></div>
+                    </div>
+                    <div class="comment-box">
+                        <input type="text" placeholder="Comment...">
+                    </div>
+                    <a href="#"><i class="far fa-paper-plane"></i></a> <!--Comment-Send Icon-->
+                </div>
+            </div>
+            <!--------All Post No.1 End-------->
+
+            <!--------All Post No.2 Start-------->
+            <div class="friend-post-container">
+                <div class="post-row">
+                    <div class="user-profile">
+                        <a href="http://127.0.0.1:5500/Queendom/friend-profile.html">
+                            <img src="{% static 'img/friend-profile-pic.png' %}">
+                        </a>
+                        <div class="post-user-profile">
+                            <p>Jonas</p>
+                            <span>May 30 2022, 21:12 pm</span>
+                        </div>
+                    </div>
+                    <a href="#"><i class="fas fa-ellipsis-v" onclick="friendmoreMenuToggle()"></i></a>
+                </div>
+
+                <p class="post-text">Hi everyone, I am a senior student at Queen's. 
+                We are initiating a student app. Subscribe <span>@Queendom</span> 
+                <a href="#">#Queendom</a></p>
+                <img src="{% static 'img/feed-image-1.png' %}" class="post-img">
+
+                <div class="post-row">
+                    <div class="activity-icons">
+                        <div><i class="fas fa-heart"></i></div>
+                        <div><i class="fas fa-star"></i></div>
+                        <div><i class="fas fa-share"></i></div>
+                    </div>
+                    <div class="comment-box">
+                        <input type="text" placeholder="Comment...">
+                    </div>
+                    <a href="#"><i class="far fa-paper-plane"></i></a> <!--Comment-Send Icon-->
+                </div>
+            </div>
+            <!--------All Post No.2 End-------->
+
+            <!--------All Post No.3 Start-------->
+            <div class="self-post-container">
+                <div class="post-row">
+                    <div class="user-profile">
+                        <a href="http://127.0.0.1:5500/Queendom/user-profile.html">
+                            <img src="{% static 'img/profile-pic.png' %}">
+                        </a>
+                        <div class="post-user-profile">
+                            <p>Ray Cai</p>
+                            <span>May 30 2022, 21:12 pm</span>
+                        </div>
+                    </div>
+                    <a href="#"><i class="fas fa-ellipsis-v" onclick="moreMenuToggle()"></i></a> <!--More Icon-->
+                </div>
+
+                <p class="post-text">Hi everyone, I am a senior student at Queen's. 
+                We are initiating a student app. Subscribe <span>@Queendom</span> 
+                <a href="#">#Queendom</a></p>
+                <img src="{% static 'img/feed-image-1.png' %}" class="post-img">
+
+                <div class="post-row">
+                    <div class="activity-icons">
+                        <div><i class="fas fa-heart"></i></div>
+                        <div><i class="fas fa-star"></i></div>
+                        <div><i class="fas fa-share"></i></div>
+                    </div>
+                    <div class="comment-box">
+                        <input type="text" placeholder="Comment...">
+                    </div>
+                    <a href="#"><i class="far fa-paper-plane"></i></a> <!--Comment-Send Icon-->
+                </div>
+            </div>
+            <!--------All Post No.3 End-------->
+
+        </div>
+
+        <!--Right side bar-->
+        <div class="right-sidebar"></div>
+    </div>
+</div>
+<!----------------Home Page End----------------->
+{% endblock content %}
