@@ -1,0 +1,58 @@
+{% extends 'users/user_base.html' %}
+
+{% load static %}
+{% block content %}
+<style>
+    .container{
+        width: 25%;
+    }
+
+    @media screen and (max-width: 1200px) {
+    .container {
+        width: calc( 100% - 30px);
+        max-width: 100%;
+    } }
+
+    .main-side {
+        padding: 40px 40px;
+    }
+
+    .fa-check {
+        width: 100%;
+        font-size:60px;
+        margin-bottom: 20px;
+    }
+
+    .verifed-content{
+        text-align: center;
+    }
+</style>
+
+<section class="email-verified">
+    <div class="container">
+        <div class="main-side">
+            <!--------Email Confirm Page Start-------->
+            <div class="verifed-content">
+
+                <div class="form-group">
+                    <i class="fas fa-check"></i>
+                </div>
+
+                <div class="form-group">
+                    <h2 class="form-title">Register confirmed</h2>
+                </div>
+
+                <div class="form-group">
+                    <p class="sub-text">Thank you for registration! :)</p>
+                </div>
+
+                <div class="form-group">
+                    <a href="{% url 'login' %}" class="to-login">Back to Login</p>
+                </div> 
+
+            </div>
+            <!--------Email Confirm Page End-------->
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends 'users/user_base.html' %}
+
+{% load static %}
+{% block content %}
+<!-- Sing in  Form -->
+<section class="sign-in">
+    <div class="container">
+        <div class="signin-content">
+            <div class="signin-image">
+                <figure><img src="{% static 'img/sign_in.png' %}" alt="sing up image"></figure>
+                <a href="{% url 'register'%}" class="signup-image-link">Create an account</a>
+            </div>
+            
+            <div class="signin-form">
+                <h2 class="form-title">Log in</h2>
+                
+                
+                <form method="POST" class="register-form" id="login-form">{% csrf_token %}
+                    <div class = "form-group form-button" id="error-report">
+                        {% if password_error %}
+                            <span class='error-message'>
+                                <i class="fas fa-circle-xmark" aria-hidden="true"> </i> 
+                                {{ password_error }} 
+                            </span>
+                        {% elif account_error %}
+                            <span class='error-message'> 
+                                <i class="fas fa-circle-xmark" aria-hidden="true"> </i>
+                                {{ account_error }} 
+                            </span>
+                        {% endif %}
+                    </div>
+                
+                    {% for field in login_form %}
+
+                    <div class="form-group">
+                        <label><i class="fas fa-{{ field.field.icon }}"></i></label>
+                        {{field}}
+                    </div>
+
+                    {% endfor %}
+                    <div class="form-group form-button">
+                        <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                    </div>
+                </form>
+                
+
+                <div class = "form-group form-button">
+                    <a href="{% url 'password_reset'%}" class="wordbtn" id="forgot-password-btn" >Forgot Password?</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

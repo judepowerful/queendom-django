@@ -51,6 +51,15 @@ form {
   grid-row: 1 / 2;
 }
 
+form ul li{
+  color: grey;
+}
+
+form p{
+  position: sticky;
+  left: -100px;
+}
+
 form.sign-up-form {
   opacity: 0;
   z-index: 1;
@@ -64,6 +73,10 @@ form.sign-in-form {
   font-size: 2.5rem;
   color: #444;
   margin-bottom: 10px;
+}
+
+.field-label{
+  text-align: left;
 }
 
 .input-field {

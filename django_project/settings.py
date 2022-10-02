@@ -73,6 +73,9 @@ TEMPLATES = [
     },
 ]
 
+# add by Jude
+AUTH_USER_MODEL = 'users.Account'
+
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
 
@@ -136,3 +139,25 @@ django_heroku.settings(locals())
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# email for account verification or password reset purpose
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True  
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587  
+EMAIL_HOST_USER = 'noreply.queendom@gmail.com'  
+EMAIL_HOST_PASSWORD = 'aqhqwknkbkpdblfx'  
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {"class": "logging.StreamHandler"},
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "INFO",
+        },
+    }
+}

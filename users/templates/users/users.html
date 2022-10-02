@@ -8,6 +8,10 @@
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
+
+    <!--script for purpose of ajax (no refresh page)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <link rel="stylesheet" href="{% static 'css/register.css' %}" />
     <title>Register Page</title>
   </head>
@@ -17,37 +21,62 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          
+          <form method="POST" class="sign-in-form" id="signin-form">{% csrf_token %}
             <h2 class="title">Sign in</h2>
+            {% for field in login_form %}
+
             <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input type="text" placeholder="Email" />
+              <i class="fas fa-{{ field.field.icon }}"></i>
+              {{field}}
             </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
-            </div>
+
+            {% endfor %}
+
             <input type="submit" value="Login" class="btn solid" />
+
             <button class="wordbtn" id="forgot-password-btn">
               Forgot Password?
             </button>
 
           </form>
-          <form action="#" class="sign-up-form">
+
+          <form method="POST" class="sign-up-form" id="signup-form">{% csrf_token %}
             <h2 class="title">Sign up</h2>
+            {% for field in registration_form %}
+
+                <div class="input-field">
+                  <i class="fas fa-{{ field.field.icon }}"></i>
+                  {{field}}
+                </div>
+                <!--
+                {% if field.help_text %}
+                  <p style="color: grey;">{{field.help_text}}</p>
+                {% endif %}
+                -->
+              
+            {% endfor %}
+            <input type="submit" class="btn" value="Sign up" />
+            
+            <div id="error-report">
+
+            </div>
+
+            <!--
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Full Name" />
+              <input type="text" name="fullname" placeholder="Full Name" />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input type="email" name="email" placeholder="Email" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" name="password" placeholder="Password" />
             </div>
             <input type="submit" class="btn" value="Sign up" />
+            -->
           </form>
         </div>
       </div>
@@ -59,7 +88,7 @@
             <p>
                Don't have an account yet ? Sign up and get access to all our services.
             </p>
-            <button class="btn transparent" id="sign-up-btn">
+            <button href="users.html" class="btn transparent" id="sign-up-btn">
               Sign up
             </button>
           </div>
@@ -82,5 +111,29 @@
     </div>
 
     <script src="{% static 'js/register.js' %}"></script>
+
+    
+    <script>
+      $(document).on('submit','#signup-form',function(e){
+          e.preventDefault();
+          var signup_form_id = $("#signup-form")
+          $.ajax({
+              type:'POST',
+              url:'{% url "users" %}',
+              data: signup_form_id.serialize(),
+              
+              success: function(data){
+                if(data){
+                  var html = '<p>'+ data +'<p>';
+                  $('#error-report').empty();
+                  $('#error-report').append(html);
+                }
+              }
+          })
+          
+        });
+    </script>
+
+
   </body>
 </html>

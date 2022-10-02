@@ -3,7 +3,7 @@
 <nav>
     <!--left side navigation bar start-->
     <div class="nav-left">
-        <a href="http://127.0.0.1:5500/Queendom/user-home.html">
+        <a href="/">
             <div class="logo"><img src="{% static 'img/logo.png' %}"></div>
         </a>
     </div>
@@ -17,7 +17,7 @@
         </div>
         <ul> 
             <li>
-                <a href="http://127.0.0.1:5500/Queendom/user-home.html" class="nav-icon"> <!--Home Icon-->
+                <a href="/" class="nav-icon"> <!--Home Icon-->
                     <i class="fas fa-home"></i>
                 </a>
             
@@ -42,23 +42,48 @@
             </li>
             -->
         </ul>
+
+        {% if request.user.is_authenticated %}
+        <div class="nav-user-icon online" onclick="settingsMenuToggle()">
+            <img src="{% static 'img/1.jpeg' %}" alt="">
+        </div>
+        {% else %}
         <div class="nav-user-icon online" onclick="settingsMenuToggle()">
             <img src="{% static 'img/log-icon.png' %}" alt="">
         </div>
+        {% endif %}
+
     </div>
     <!--right side navigation bar end-->
 
     <!----------------User setting menu Start----------------->
     <div class="settings-menu">
         <div class="settings-menu-inner">
+            
+            {% if request.user.is_authenticated %}
             <div class="user-profile"> <!--Line 1-->
-            <img src="{% static 'img/log-icon.png' %}">
+                <img src="{% static 'img/1.jpeg' %}">
+                <div>
+                    <h2>Ray Cai</h2>
+                    <a href="http://127.0.0.1:5500/Queendom/user-profile.html">See your profile</a>
+                </div>
+            </div>
+            <hr> <!--setting menu分割线-->          
+            <div class="setting-links"> <!--Line 6-->
+                <img src="{% static 'img/logout.png' %}" class="settings-icon">
+                <a href="{% url 'logout' %}">Logout <img src="{% static 'img/arrow.png' %}" width="10px"></a>
+            </div>
+
+            {% else %}
+            <div class="user-profile"> <!--Line 1-->
+                <img src="{% static 'img/log-icon.png' %}">
                 <div>
                     <p>Sign In/Sign Up</p>
-                    <a href="/users">Sign in/Sing up with your account</a>
+                    <a href="/login">Sign in/Sing up with your account</a>
                 </div>
             </div>
             <hr> <!--setting menu分割线-->
+            {% endif %}
         </div>
     </div>
     <!----------------User settisng menu End----------------->

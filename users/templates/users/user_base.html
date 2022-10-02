@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Queendom</title>
+    <script src="https://kit.fontawesome.com/9fc067fd17.js" crossorigin="anonymous"></script>
+
+
+    <!--script for purpose of ajax (no refresh page)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user_navbar.css' %}">
+</head>
+<body>
+    
+
+    <div class="main">
+        <!--Navigation Bar Start-->
+        <nav>
+            <!--left side navigation bar start-->
+            <div class="nav-left">
+                <a href="{% url 'index' %}">
+                    <div class="logo"><img src="{% static 'img/queendom-logo.png' %}"></div>
+                </a>
+            </div>
+            <!--left side navigation bar end-->
+
+            <!--right side navigation bar start-->
+            <div class="nav-right"></div>
+            <!--right side navigation bar end-->
+        </nav>
+        <!--Navigation Bar End-->
+        {% block content %}
+
+
+        {% endblock content %}
+    </div>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

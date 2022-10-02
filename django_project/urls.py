@@ -15,9 +15,47 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
+
+from users.forms import UserPasswordResetForm, UserPasswordResetNewForm
+
+from users.views import (
+    registration_view,
+    logout_view,
+    login_view,
+    activate,
+    test,
+)
+
+from blog.views import (
+    blog_view,
+)
 
 urlpatterns = [
+    # admin backend
     path('admin/', admin.site.urls),
-    path('', include('blog.urls')),
-    path('users/', include('users.urls')),
+
+    # index blog
+    path('', blog_view, name="index"),
+
+    # register, login, logout, forget pass
+    path('register/', registration_view, name="register"),
+    path('login/', login_view, name="login"),
+    path('logout/', logout_view, name="logout"),
+    path('accounts/password/reset/', auth_views.PasswordResetView.as_view(
+        template_name='users/password_reset/password_reset.html',
+        form_class = UserPasswordResetForm), name='password_reset'),
+
+    path('accounts/password/reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset/password_reset_done.html'),
+     name='password_reset_done'),
+ 
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(
+        template_name = 'users/password_reset/password_reset_new.html',
+        form_class= UserPasswordResetNewForm), name='password_reset_confirm'),
+        
+    path('accounts/password/reset/complete/', auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset/password_reset_complete.html'),
+     name='password_reset_complete'),
+    
+    # path for email verification
+    path('activate/<uidb64>/<token>', activate, name='activate'),  
 ]
