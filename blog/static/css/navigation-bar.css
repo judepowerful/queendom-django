@@ -23,32 +23,47 @@ body{
 nav{
     display: flex;
     align-items: center;
-
+    margin-right: 0;
+    padding: 13px 5%;
     background: #ffffff;
-    padding: 5px 5%;
     position: sticky;
     top: 0;
     z-index: 100;
     box-shadow: 2px 4px 20px rgba(119, 119, 119, .5);
+
 }
-.logo{
-    margin-right: 45px;
-}
+
 .logo img{
     margin-top: 2px;
     height: 39px;
-    margin-left: 170px;
+
 }
 .nav-left, .nav-right{
     display: flex;
     align-items: center;
+    flex-basis: 25%;
+    position: sticky;
+    top: 70px;
+    align-self: flex-start;
+    min-width: 26.5%;
+}
+.nav-left-inner{
+    position: sticky;
+    left: 1000px;
+}
+.nav-middle{
+    flex-basis: 45.5%;
+    margin: auto;
+
 }
 
 .nav-user-icon{
     margin-left: 30px;
 }
 .nav-user-icon img{
-    width: 30px;
+    display: flex;
+
+    width: 40px;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -64,19 +79,19 @@ nav{
     color: #ab2222
 }
 .search-box{
-    left: 50%;
+    margin: auto;
+}
+.search-box-inner{
     background:#efefef;
     width: 350px;
     border-radius: 20px;
     display: flex;
     align-items:center;
     padding: 0 15px;
-    margin-left: 110px;
-    margin-right: 150px;
-
+    margin: auto;   
 }
 .search-box img{
-    width: 18px;
+    width: 15px;
 }
 .search-box input{
     width: 100%;
@@ -92,8 +107,9 @@ nav{
 .nav-right ul li a i{
     color: #141e5f;
     width: 28px;
-    margin: 0 15px;
+    margin-right: 30px;
 }
+
 .nav-right ul li a i:hover{
     color: rgb(169, 29, 29);
 }

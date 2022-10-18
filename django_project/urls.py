@@ -31,6 +31,7 @@ from users.views import (
 
 from blog.views import (
     blog_view,
+    profile_view,
 )
 
 urlpatterns = [
@@ -40,10 +41,15 @@ urlpatterns = [
     # index blog
     path('', blog_view, name="index"),
 
-    # register, login, logout, forget pass
+    # register, login, logout
     path('register/', registration_view, name="register"),
     path('login/', login_view, name="login"),
     path('logout/', logout_view, name="logout"),
+
+    # account managements
+    path('<str:pk>/', profile_view, name='profile'),
+
+    # password reset
     path('accounts/password/reset/', auth_views.PasswordResetView.as_view(
         template_name='users/password_reset/password_reset.html',
         form_class = UserPasswordResetForm), name='password_reset'),

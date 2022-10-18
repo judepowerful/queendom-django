@@ -12,7 +12,7 @@ from .tokens import account_activation_token
 from django.views import View
 from django.http import HttpResponse
 from django.core.mail import EmailMessage  
-from users.models import Account
+from users.models import Account, Profile
 from django.contrib.auth import get_user_model
 
 def test(request):
@@ -23,10 +23,6 @@ def registration_view(request):
     if request.POST:
         form = RegistrationForm(request.POST)
         if form.is_valid():
-
-            account = form.save(commit=False)
-            account.is_active = False
-            account.save()
             # input information
             email = form.cleaned_data.get('email')
             full_name = form.cleaned_data.get('full_name')
@@ -34,6 +30,11 @@ def registration_view(request):
             # ---
             current_site = get_current_site(request)
             
+            account = form.save(commit=False)
+            account.is_active = False
+            account.netid = email.split('@')[0]
+            account.save()
+
             # login the account
             # account = authenticate(email=email, password = raw_password)
             
@@ -84,26 +85,34 @@ def login_view(request):
         form = AuthenticationForm(request.POST)
         email = request.POST['email']
         password = request.POST['password']
-        check_if_user_exists = Account.objects.filter(email=email).exists()
+
+        # retrieve this account
+        user_account = Account.objects.get(email=email)
 
         # check if account exists
-        if(check_if_user_exists):
+        if(user_account):
+            # if exists, check if account is active
+            check_if_user_active = user_account.is_active
 
-            # if so, check password
+            # check password, user will be none if not active
             user = authenticate(email=email, password=password)
             if (user):
                 login(request, user)
                 return redirect("index")
 
-            # if password incorrect
+            # if password incorrect or email not activate
             else:
-                password_error = "Your password is incorrect."
-                context['password_error'] = password_error
+                if(check_if_user_active):
+                    password_error = "Your password is incorrect."
+                    context['login_error'] = password_error
+                else:
+                    email_notactivate_error = "Please confirm your email."
+                    context['login_error'] = email_notactivate_error
         
         # if account does not exists
         else:
             account_error = "No account exists with this email."
-            context['account_error'] = account_error
+            context['login_error'] = account_error
     else:
         form = AuthenticationForm()
     context['login_form'] = form
@@ -121,7 +130,12 @@ def activate(request, uidb64, token):
         user = None  
     if user is not None and account_activation_token.check_token(user, token):  
         user.is_active = True  
-        user.save()  
+        user.save()
+
+        # also create new profile for user
+        new_profile = Profile.objects.create(user=user)
+        new_profile.save()
+
         return render(request, 'users/email_verified.html')  
     else:  
         return HttpResponse('Activation link is invalid!')  

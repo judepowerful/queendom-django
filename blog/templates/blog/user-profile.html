@@ -1,0 +1,67 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+{% block content %}
+<!--------Profile Page Start-------->
+<div class="container">
+    <!--Left side bar-->
+    <div class="left-sidebar"></div>
+
+    <!--Main Content-->
+    <div class="main-content">
+        <div class="user">
+            <div class="user-profile"> <!--Photo-->
+                <img src="{% static 'img/1.jpeg' %}">
+                <div class="photochange">
+                    <h2>Ray Cai</h2>
+                    <p>Peace & Love</p>
+                    <p>Health Studies</p>
+                </div>
+                <a href="#"><i class="fas fa-user-friends" onclick="friendMenuToggle()"></i></a>
+                <a href="http://127.0.0.1:5500/Queendom/edit.html"><i class="fas fa-cog"></i></a>
+            </div>
+        </div>
+        
+        <!----Buttons Start---->
+        <button class="btn-view-post">1 POST</button>
+        <button class="btn-view-post">SAVED</button>
+        <hr> <!--setting menu分割线-->
+        <!----Buttons End---->
+
+        <div class="post-container">
+            <div class="post-row">
+                <div class="user-profile">
+                    <img src="{% static 'img/1.jpeg' %}">
+                    <div class="post-user-profile">
+                        <p>Ray Cai</p>
+                        <span>May 30 2022, 21:12 pm</span>
+                    </div>
+                </div>
+                <a href="#"><i class="fas fa-ellipsis-v"></i></a> <!--More Icon-->
+            </div>
+
+            <p class="post-text">Hi everyone, I am a senior student at Queen's. 
+            We are initiating a student app. Subscribe <span>@Queendom</span> 
+            <a href="#">#Queendom</a></p>
+            <img src="{% static 'img/feed-image-1.png' %}" class="post-img">
+
+            <div class="post-row">
+                <div class="activity-icons">
+                    <div><i class="fas fa-heart"> Like</i></div>
+                    <div><i class="fas fa-share"> Share</i></div>
+                </div>
+                <div class="comment-box">
+                    <input type="text" placeholder="Comment...">
+                </div>
+                <a href="#"><i class="far fa-paper-plane"></i></a> <!--Comment-Send Icon-->
+
+            </div>
+        </div>
+
+    </div>    
+
+    <!--Right side bar-->
+    <div class="right-sidebar"></div>
+</div>
+<!--------Profile Page End-------->
+{% endblock content %}

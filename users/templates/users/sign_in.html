@@ -17,15 +17,10 @@
                 
                 <form method="POST" class="register-form" id="login-form">{% csrf_token %}
                     <div class = "form-group form-button" id="error-report">
-                        {% if password_error %}
+                        {% if login_error %}
                             <span class='error-message'>
                                 <i class="fas fa-circle-xmark" aria-hidden="true"> </i> 
-                                {{ password_error }} 
-                            </span>
-                        {% elif account_error %}
-                            <span class='error-message'> 
-                                <i class="fas fa-circle-xmark" aria-hidden="true"> </i>
-                                {{ account_error }} 
+                                {{ login_error }} 
                             </span>
                         {% endif %}
                     </div>

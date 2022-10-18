@@ -38,7 +38,6 @@ body{
 }
 
 .left-sidebar{  /*Left side Start*/
-    background: #cbdffa;
     flex-basis: 25%;
     position: sticky;
     top: 70px;
@@ -46,7 +45,6 @@ body{
     
 }
 .right-sidebar{ /*Right side Start*/
-    background: #cbdffa;
     flex-basis: 25%;
     position: sticky;
     top: 70px;
@@ -69,7 +67,7 @@ select{
 
 /*------Write Post Start------*/
 .write-post-container{ /*Write*/
-    width: 100%;
+    width: 93.5%;
     background: #fff;
     border-radius: 6px;
     padding: 20px;
@@ -105,7 +103,7 @@ select{
 
 .title-box{
     background:#efefef;
-    width: 560px;
+    width: 683.88px;
     display: flex;
     align-items:center;
     padding: 0;
@@ -161,15 +159,6 @@ select{
     left: 2000px;
     width: 70px;
 }
-#display_image{
-
-    margin-top: 10px;
-    width: 100px;
-    height: 100px;
-
-    background-position: center;
-    background-size: cover;
-}
 /*--photos menu start--*/
 .photos-menu{
     position: absolute;
@@ -209,8 +198,8 @@ select{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 4px;
     overflow: hidden;
-    top: 65%;
-    right: 29.5%;
+    top: 32%;
+    right: 32%;
     max-height: 0;
     transition: max-height 0.3s;
 }
@@ -239,7 +228,13 @@ select{
 
 /*--self more menu start--*/
 .selfmore-menu{
-    position: absolute;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
     width: 50%;
     max-width: 400px;
     height: 410px;
@@ -247,8 +242,6 @@ select{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 4px;
     overflow: hidden;
-    top: 30%;
-    right: 35%;
     max-height: 0;
     transition: max-height 0.3s;
 }
@@ -260,7 +253,13 @@ select{
 
 /*--Delect--*/
 .delect-menu{
-    position: absolute;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
     width: 50%;
     max-width: 400px;
     height: 410px;
@@ -268,8 +267,7 @@ select{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 4px;
     overflow: hidden;
-    top: 30%;
-    right: 35%;
+
     max-height: 0;
     transition: max-height 0.3s;
 }
@@ -300,6 +298,11 @@ button-bot {
 button-bot:hover {
     background-color: #f28f1e;
 }
+.delect-btn-outter{
+
+    width: 173px;
+    margin: 30px auto;
+}
 .delect-btn{
     border-radius: 5px;
     border: none;
@@ -315,6 +318,7 @@ button-bot:hover {
     border: none;
     cursor: pointer;
     transition: 0.5s;
+    margin: auto;
 }
 .cancel-btn{
     border-radius: 5px;
@@ -331,11 +335,18 @@ button-bot:hover {
     border: none;
     cursor: pointer;
     transition: 0.5s;
+    margin: auto;
 }
 /*--Delect--*/
 /*--Privacy--*/
 .block-menu{
-    position: absolute;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
     width: 50%;
     max-width: 400px;
     height: 310px;
@@ -343,23 +354,26 @@ button-bot:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 4px;
     overflow: hidden;
-    top: 30%;
-    right: 35%;
     max-height: 0;
     transition: max-height 0.3s;
 }
 .block-menu-height{
     max-height: 270px;
 }
+.block-menu-inner{
+    width: 180px;
+    margin: auto;
+}
 .block-menu h3{
     display: inline;
     margin: 0 5px;
+    text-align: center;
 }
 .block-menu select{
     margin-top: 52px;
     border-radius: 1.2em;
     border: 1px solid #9a9a9a;
-    width: 20%;
+    width: 40%;
     height: 12%;
     padding: 7px 0;
     color: #626262;
@@ -367,7 +381,12 @@ button-bot:hover {
 }
 /*--Privacy--*/
 .friendmore-menu{
-    position: absolute;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     width: 50%;
     max-width: 400px;
     height: 410px;
@@ -375,8 +394,6 @@ button-bot:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 4px;
     overflow: hidden;
-    top: 30%;
-    right: 35%;
     max-height: 0;
     transition: max-height 0.3s;
 }
@@ -388,7 +405,12 @@ button-bot:hover {
     padding: 50px 20px;
 }
 .report-menu{
-    position: absolute;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     width: 50%;
     max-width: 400px;
     height: 640px;
@@ -396,8 +418,7 @@ button-bot:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 4px;
     overflow: hidden;
-    top: 10%;
-    right: 35%;
+
     max-height: 0;
     transition: max-height 0.3s;
 }
@@ -407,6 +428,7 @@ button-bot:hover {
 .report-menu p{
     font-size: 100%;
     padding: 10px 0;
+    text-align: center;
 }
 .report-choice-inner{
     background-color: white;
@@ -427,6 +449,11 @@ button-bot:hover {
 
 .report-success-menu{
     position: absolute;
+    left: 0;
+    right: 0;
+    top: 400px;
+    bottom: 0;
+    margin: auto;
     width: 50%;
     max-width: 400px;
     height: 410px;
@@ -434,8 +461,6 @@ button-bot:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 4px;
     overflow: hidden;
-    top: 30%;
-    right: 35%;
     max-height: 0;
     transition: max-height 0.3s;
 }
@@ -443,7 +468,7 @@ button-bot:hover {
     max-height: 350px;
 }
 .report-success-menu p{
-    padding: 25px;
+    text-align: center;
 }
 
 .fa-ellipsis-v:hover{
@@ -475,6 +500,7 @@ button-bot:hover {
     cursor: pointer;
 }
 .fa-check{
+    margin: auto;
     font-size: 50px;
     color: #ab2222;
     font-weight: bold;
@@ -485,7 +511,7 @@ button-bot:hover {
     padding-top: 18px;
     border-radius: 50%;
     box-sizing: border-box;
-    margin: 30px 0 0 0px;
+    margin: 30px 165px;
 }
 .edit-choice,.privacy-choice,.delect-choice,.report-choice{
     background-color: white;
@@ -519,7 +545,7 @@ button-bot:hover {
 
 
 .self-post-container{
-    width: 100%;
+    width: 93.5%;
     background: #fff;
     border-radius: 6px;
     padding: 20px;
@@ -528,7 +554,7 @@ button-bot:hover {
     box-shadow: 2px 5px 20px rgba(119, 119, 119, .5);
 }
 .friend-post-container{
-    width: 100%;
+    width: 93.5%;
     background: #fff;
     border-radius: 6px;
     padding: 20px;
@@ -601,6 +627,145 @@ button-bot:hover {
 }
 /*------ALL Post End------*/
 /*--Main content End--*/
+
+
+/*-----Right content Start-----*/
+.home-feedback{
+    position: fixed;
+    display: flex;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+}
+.home-feedback-inner{
+    display: flex;
+    align-items: center;
+    background: #f28f1e;
+    width: 70px;
+    height: 70px;
+    position: sticky;
+    box-shadow: 2px 4px 20px rgba(119, 119, 119, .5);
+    border-radius: 15px;
+}
+.home-feedback i{
+    color: #efefef;
+    font-size: 45px;
+    padding: 12px;
+    display: flex;
+}
+
+
+/*--Give Feedback Menu Start--*/
+
+.homefeedback-menu{
+    right: 106px;
+    bottom: 16px;
+    z-index: 10;
+    position: fixed;
+    width: 90%;
+    max-width: 350px;
+    height: 460px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s;
+}
+.homefeedback-menu-height{
+    max-height: 320px;
+}
+.feedback-input-container{
+    padding: 20px;
+    width: 50%;
+    height: 190px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    resize: none;
+}
+
+.feedback-input-container textarea{
+    width: 310px;
+    position: sticky;
+    right: 1000px;
+    padding-top: 10px;
+    height: 150px;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+    background: transparent;
+    resize: none;
+}
+.feedback-input-container hr{
+    width: 310px;
+}
+.feedback-sent-btn{
+    width: 100px;
+    background-color: #b02828;
+    border: none;
+    outline: none;
+    height: 35px;
+    border-radius: 49px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 8px;
+    font-weight: 600;
+    margin: 10px 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 0 2px 5px  rgba(0, 0, 0, 0.6);
+}
+.feedback-sent-btn:hover{
+    background-color: #f28f1e;
+}
+/*--Give Feedback Menu End--*/
+
+/*--Give Another Feedback Menu Start--*/
+.home-another-feedback-menu{
+    right: 106px;
+    bottom: 16px;
+    z-index: 10;
+    position: fixed;
+    width: 90%;
+    max-width: 350px;
+    height: 460px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s;
+}
+.home-another-feedback-menu-height{
+    max-height: 320px;
+}
+.homefeedback-container label{
+    margin-left: 130px;
+}
+.homefeedback-container p{
+    text-align: center;
+}
+.feedback-sent-another-btn{
+
+    width: 200px;
+    background-color: #b02828;
+    border: none;
+    outline: none;
+    height: 35px;
+    border-radius: 49px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 8px;
+    font-weight: 600;
+    margin: 30px 75px;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 0 2px 5px  rgba(0, 0, 0, 0.6);
+}
+/*--Give Another Feedback Menu End--*/
+/*-----Right content End-----*/
+
 /*------------------Home Page End-------------------*/
 
 .footer{
