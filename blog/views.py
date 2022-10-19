@@ -3,13 +3,18 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 
 from users.models import Account, Profile
+from django.http import HttpResponse
 
+# Index view for blog
 def blog_view(request):
     return render(request, 'blog/index.html')
 
-@login_required(login_url='/login/')
+# Profile pages for each users
+# @login_required(login_url='/login/')
 def profile_view(request, pk):
     context = {}
-    user_object = Account.objects.get(netid=pk)
-
-    return render(request, 'blog/user-profile.html', {})
+    user_found = Account.objects.filter(netid=pk).first()
+    if (user_found == None):
+        return HttpResponse("No matching account", content_type='text/plain')
+    else:
+        return render(request, 'blog/user-profile.html', {})
