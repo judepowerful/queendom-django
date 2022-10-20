@@ -18,3 +18,6 @@ def profile_view(request, pk):
         return HttpResponse("No matching account", content_type='text/plain')
     else:
         return render(request, 'blog/user-profile.html', {})
+
+def frontend_view(request):
+    return render(request, 'blog/popups/create-post-forum.html')

@@ -10,6 +10,9 @@
       crossorigin="anonymous">
     </script>
 
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/create-post-forum.css' %}" />
     <link rel="stylesheet" href="{% static 'css/user-home.css' %}" />
     <link rel="stylesheet" href="{% static 'css/navigation-bar.css' %}">
     <link rel="stylesheet" href="{% static 'css/user-profile.css' %}">
@@ -18,9 +21,13 @@
   </head>
   <body>
   {% include 'blog/navbar.html' %}
+  {% include 'blog/popups/create-post-forum.html' %}
   {% block content %}
 
 
   {% endblock content %}
+  
+    <script src="{% static 'js/popup.js' %}"></script>
   </body>
+
   </html>

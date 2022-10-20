@@ -1,0 +1,174 @@
+/*User Profile Page Start*/
+
+/*-----------User info Start---------*/
+.user .user-profile{
+    padding: 20px;
+    padding-bottom: 0;
+}
+.user .user-profile img{
+    width: 70px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.user h2{
+    font-size: larger;
+}
+.user i{
+    padding-left: 30px;
+    color: #626262;
+    text-align: baseline;
+    text-decoration: none;
+    font-size: 17px;
+}
+.photochange p, .post-user-profile p{
+    padding: 0px;
+    text-align: left;
+}
+
+/*--Friend menu--*/
+.profile-friend-menu{
+    position: absolute;
+    width: 270px;
+    max-width: 400px;
+    height: 310px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    top: 20%;
+    right: 38%;
+    max-height: 0;
+    transition: max-height 0.3s;
+}
+.profile-friend-menu-height{
+    max-height: 470px;
+}
+.profile-friend-menu-inner{
+    margin: 10px 10px;
+}
+.friend-menu-inner h1{
+    margin-top: 10px;
+    font-size: 25px;
+    text-align: center;
+}
+.friend-menu-inner .user-profile{
+    margin: 0 20px;
+}
+.friend-menu-inner a{
+    margin: 0 5px;
+}
+.friend-menu-inner a:hover{
+    color: #f28f1e;
+}
+/*-----------User info End---------*/
+
+/*---Popup Box for Friend More Button Start---*/
+.fprofile-popup-more{
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 270px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 2px 5px 20px rgba(119, 119, 119, .5);
+}
+#click{
+    display: none;
+}
+#click:checked ~ .fprofile-popup-more{
+    opacity: 1;
+    visibility: visible;
+}
+.fa-ellipsis-h:hover,.user i:hover{
+    color: #ab2222;
+}
+.fa-check{
+    font-size: 50px;
+    color: #ab2222;
+    font-weight: bold;
+    height: 80px;
+    width: 80px;
+    border: 3px solid #ab2222;
+    text-align: center;
+    padding-top: 18px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    margin: 30px 0 0 0px;
+}
+.choice{
+    width: 300px;
+    margin: 15px 15px;
+    display: flex;
+    padding: 15px 32px;
+    font-size: 17px;
+    color: #000000;
+    text-align: left;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 0 2px 2px  rgba(0, 0, 0, 0.6);
+}
+.choice:hover{
+    background-color: #ebc8c8;
+}
+.save-btn {
+    position: absolute;
+    bottom: 12px;
+    right: 25px;
+    padding: 5px 10px;
+    background-color: #b02828;
+    border: none;
+    outline: none;
+    border-radius: 49px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 0 2px 5px  rgba(0, 0, 0, 0.6);
+  }
+.save-btn:hover {
+    background-color: #f28f1e;
+}
+.block-menu{
+    position: absolute;
+    width: 50%;
+    max-width: 400px;
+    height: 310px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    top: 30%;
+    right: 35%;
+    max-height: 0;
+    transition: max-height 0.3s;
+}
+.block-menu-height{
+    max-height: 270px;
+}
+.block-menu h3{
+    display: inline;
+    margin: 0 5px;
+    margin-left: 135px;
+}
+select{
+    margin-top: 5px;
+    border-radius: 1.2em;
+    border: 1px solid #9a9a9a;
+    height: 12%;
+    padding: 7px 0;
+    color: #626262;
+    outline: none;
+}
+/*---Popup Box for Friend More Button End---*/
+
+
+

@@ -1,0 +1,42 @@
+{% load static %}
+
+<!----------------Create Post menu Start----------------->
+<div class="menu-background" id="create-post-forum">
+    <div class="createpost-menu">
+        <div class="header">
+            <h2>Create Post</h2>
+            <label for="click" class="fas fa-times" onclick="closeCreatePostMenu()"></label>
+        </div>
+        <div class="createpost-menu-inner">
+            
+            <div class="create-post-container"> <!--Write-->
+                <div class="user-profile">
+                    <a href="http://127.0.0.1:5500/Queendom/user-profile.html">
+                        <img src="{% static 'img/1.jpeg' %}">
+                    </a>
+                    <div>
+                        <p>Ray Cai</p>
+                        <select name="privacy" id="privacy">
+                            <option value="Public">Public</option>
+                            <option value="Privacy">Private</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="post-input-container"> <!--Input-->
+                    <div class="title-box">
+                        <input type="text" placeholder="TITLE HERE... 0-20 words"> <!--title-->
+                    </div>
+                    <textarea id = "message" rows="8" placeholder="Post your ideas here..."></textarea>
+                    <div id="display_image"></div>
+                    <div class="add-post-links">
+                        <!--Icons of Post-->
+                        <input type="file" id="image_input" accept="image/png, image/jpg"  class="fas fa-camera">
+                        <a href="#"><i class="fas fa-grin-alt" onclick="feelingsMenuToggle()"> Feelings</i></a>
+                        <button class="btn">Post</button>
+                    </div>
+                </div>
+            </div>                     
+        </div>
+    </div>
+</div>
+<!----------------Create Post menu End----------------->

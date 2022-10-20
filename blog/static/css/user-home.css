@@ -1,71 +1,6 @@
-*
-{
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins';
-}
-:root{
-    --color-white:hsl(252, 30%, 100%);
-    --color-light:hsl(252, 30%, 95%);
-    --color-gray:hsl(252, 15%, 65%);
-    --color-primary:#ab2222;
-    --color-secondary:#f28f1e;
-    --color-dark:hsl(252, 30%, 17%);
-    --color-balck:hsl(252, 30%, 10%);
-    --color-pink:#ebc8c8;
-}
-
-body{
-    background: #ffffff;
-}
 
 /*Home Page Start*/
-.cover{
-    height: 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
-    transition: opacity 1s ease-in-out;
-    
-}
-.container{
-    display: flex;
-    justify-content: space-between;
-    padding: 13px 5%;
-    animation: fadeIn 1s;
-
-}
-
-.left-sidebar{  /*Left side Start*/
-    flex-basis: 25%;
-    position: sticky;
-    top: 70px;
-    align-self: flex-start;
-    
-}
-.right-sidebar{ /*Right side Start*/
-    flex-basis: 25%;
-    position: sticky;
-    top: 70px;
-    align-self: flex-start;
-    
-}
-.main-content{ /*Main content Start*/
-    flex-basis: 47%;
-}
-select{
-    margin-top: 5px;
-    border-radius: 1.2em;
-    border: 1px solid #9a9a9a;
-    width: 100%;
-    height: 60%;
-    padding: 7px 0;
-    color: #626262;
-    outline: none;
-}
-
-/*------Write Post Start------*/
+/*--------------Write Post Start--------------*/
 .write-post-container{ /*Write*/
     width: 93.5%;
     background: #fff;
@@ -83,24 +18,20 @@ select{
     border-radius: 50%;
     margin-right: 10px;
 }
-
 .user-profile small{
     padding-right: 10px;
     font-size: 12px;
 }
-
 .post-user-profile p{
     margin-bottom: -5px;
     font-weight: 500;
     color: #626262;
     text-align:left
 }
-
 .post-input-container{
     padding-left: 55px;
     padding-top: 20px;
 }
-
 .title-box{
     background:#efefef;
     width: 683.88px;
@@ -108,7 +39,6 @@ select{
     align-items:center;
     padding: 0;
 }
-
 .title-box input{
     width: 100%;
     background: transparent;
@@ -116,20 +46,6 @@ select{
     outline: none;
     border: 0;
 }
-
-.post-input-container textarea{
-    position: sticky;
-    right: 1000px;
-    padding-top: 10px;
-    width: 560px;
-    height: 100px;
-    border: 0;
-    outline: 0;
-    border-bottom: 1px solid #ccc;
-    background: transparent;
-    resize: none;
-}
-
 .add-post-links{
     display: flex;
     margin-top: 10px;
@@ -151,13 +67,6 @@ select{
 }
 .add-post-links a:hover{
     color: #141e5f;
-}
-.post-input-container button{
-    margin: 5px 5px;
-    margin-right: 35px;
-    position: sticky;
-    left: 2000px;
-    width: 70px;
 }
 /*--photos menu start--*/
 .photos-menu{
@@ -220,13 +129,12 @@ select{
     background-color: #fae1c5;
 }
 /*--Feelings menu End--*/
-/*------Write Post End------*/
+/*--------------Write Post End--------------*/
 
-/*-----------------------ALL Post Start------------------------*/
 
+/*--------------ALL Post Start--------------*/
 /*---Popup Box for More Button Start---*/
-
-/*--self more menu start--*/
+/*--self more menu--*/
 .selfmore-menu{
     position: fixed;
     left: 0;
@@ -234,7 +142,6 @@ select{
     top: 0;
     bottom: 0;
     margin: auto;
-
     width: 50%;
     max-width: 400px;
     height: 410px;
@@ -249,8 +156,6 @@ select{
     max-height: 350px;
 }
 
-/*--self more menu End--*/
-
 /*--Delect--*/
 .delect-menu{
     position: fixed;
@@ -259,7 +164,6 @@ select{
     top: 0;
     bottom: 0;
     margin: auto;
-
     width: 50%;
     max-width: 400px;
     height: 410px;
@@ -267,7 +171,6 @@ select{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-radius: 4px;
     overflow: hidden;
-
     max-height: 0;
     transition: max-height 0.3s;
 }
@@ -275,8 +178,7 @@ select{
     max-height: 350px;
 }
 .delect-menu p{
-    font-size: 120%;
-    padding: 50px 20px;
+    padding: 50px 10px;
 }
 button-bot {
     position: absolute;
@@ -299,7 +201,6 @@ button-bot:hover {
     background-color: #f28f1e;
 }
 .delect-btn-outter{
-
     width: 173px;
     margin: 30px auto;
 }
@@ -346,7 +247,6 @@ button-bot:hover {
     top: 0;
     bottom: 0;
     margin: auto;
-
     width: 50%;
     max-width: 400px;
     height: 310px;
@@ -361,13 +261,11 @@ button-bot:hover {
     max-height: 270px;
 }
 .block-menu-inner{
-    width: 180px;
+    width: 200px;
     margin: auto;
 }
 .block-menu h3{
     display: inline;
-    margin: 0 5px;
-    text-align: center;
 }
 .block-menu select{
     margin-top: 52px;
@@ -376,7 +274,6 @@ button-bot:hover {
     width: 40%;
     height: 12%;
     padding: 7px 0;
-    color: #626262;
     outline: none;
 }
 /*--Privacy--*/
@@ -400,10 +297,6 @@ button-bot:hover {
 .friendmore-menu-height{
     max-height: 350px;
 }
-.friendmore-menu p{
-    font-size: 120%;
-    padding: 50px 20px;
-}
 .report-menu{
     position: fixed;
     left: 0;
@@ -425,11 +318,6 @@ button-bot:hover {
 .report-menu-height{
     max-height: 640px;
 }
-.report-menu p{
-    font-size: 100%;
-    padding: 10px 0;
-    text-align: center;
-}
 .report-choice-inner{
     background-color: white;
     width: 370px;
@@ -446,7 +334,6 @@ button-bot:hover {
     transition: 0.5s;
     box-shadow: 0 2px 2px  rgba(0, 0, 0, 0.6);
 }
-
 .report-success-menu{
     position: absolute;
     left: 0;
@@ -467,37 +354,8 @@ button-bot:hover {
 .report-success-menu-height{
     max-height: 350px;
 }
-.report-success-menu p{
-    text-align: center;
-}
-
 .fa-ellipsis-v:hover{
     color: #ab2222;
-}
-
-.header{
-    height: 68px;
-    background: #ab2222;
-    overflow: hidden;
-    border-radius: 3px 3px 0 0;
-    box-shadow: 0 2px 3px rgba(119, 119, 119, .5);
-}
-.header h2{
-    color: white;
-    padding-left: 32px;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: left;
-    margin-top: 20px;
-}
-.fa-times{
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
 }
 .fa-check{
     margin: auto;
@@ -533,103 +391,11 @@ button-bot:hover {
 .edit-choice:hover,.privacy-choice:hover,.delect-choice:hover,.choice-delect:hover,.report-choice:hover,.report-choice-inner:hover{
     background-color: #ebc8c8;
 }
-.line{
-    position: absolute;
-    bottom: 65px;
-    width: 100%;
-    height: 1px;
-    background: #626262;
-}
-
 /*---Popup Box for More Button End---*/
+/*---------------------Main content End------------------*/
 
 
-.self-post-container{
-    width: 93.5%;
-    background: #fff;
-    border-radius: 6px;
-    padding: 20px;
-    color: #626262;
-    margin: 20px 0;
-    box-shadow: 2px 5px 20px rgba(119, 119, 119, .5);
-}
-.friend-post-container{
-    width: 93.5%;
-    background: #fff;
-    border-radius: 6px;
-    padding: 20px;
-    color: #626262;
-    margin: 20px 0;
-    box-shadow: 2px 5px 20px rgba(119, 119, 119, .5);
-}
-
-.post-user-profile span{
-    font-size: 10px;
-    color: #9a9a9a;
-}
-
-.post-text{
-    color: #000000;
-    font-size: 15px;
-    padding: 5px 0;
-    text-align:left
-}
-.post-text span{
-    color: #ab2222;
-    font-weight: 500;
-}
-.post-text a{
-    color: #ab2222;
-    text-decoration: none;
-}
-.post-img{
-    width: 100%;
-    border-radius: 4px;
-    margin-bottom: 5px;
-}
-
-.post-row{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.post-row i:hover{
-    color: #ab2222;
-}
-.activity-icons div img{
-    width: 18px;
-    margin-right: 10px;
-}
-.activity-icons div{
-    display: inline-flex;
-    align-items: center;
-    margin-right: 30px;
-    font-size: 13px;
-}
-
-.comment-box{
-    background:#efefef;
-    width: 430px;
-    border-radius: 20px;
-    display: flex;
-    align-items:center;
-    padding: 0 15px;
-}
-.comment-box input{
-    width: 100%;
-    background: transparent;
-    padding: 10px;
-    outline: none;
-    border: 0;
-}
-.post-row a{
-    color: #9a9a9a;
-}
-/*------ALL Post End------*/
-/*--Main content End--*/
-
-
-/*-----Right content Start-----*/
+/*-------------------Right content Start-----------------*/
 .home-feedback{
     position: fixed;
     display: flex;
@@ -654,9 +420,7 @@ button-bot:hover {
     display: flex;
 }
 
-
 /*--Give Feedback Menu Start--*/
-
 .homefeedback-menu{
     right: 106px;
     bottom: 16px;
@@ -684,7 +448,6 @@ button-bot:hover {
     background: transparent;
     resize: none;
 }
-
 .feedback-input-container textarea{
     width: 310px;
     position: sticky;
@@ -747,7 +510,6 @@ button-bot:hover {
     text-align: center;
 }
 .feedback-sent-another-btn{
-
     width: 200px;
     background-color: #b02828;
     border: none;
@@ -764,13 +526,6 @@ button-bot:hover {
     box-shadow: 0 2px 5px  rgba(0, 0, 0, 0.6);
 }
 /*--Give Another Feedback Menu End--*/
-/*-----Right content End-----*/
+/*---------------Right content End--------------*/
+/*------------------------Home Page End-----------------------*/
 
-/*------------------Home Page End-------------------*/
-
-.footer{
-    text-align: center;
-    color: #9a9a9a;
-    padding: 10px;
-    font-size: 13px;
-}
