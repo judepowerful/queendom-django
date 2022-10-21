@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.decorators import login_required
@@ -7,6 +8,11 @@ from django.http import HttpResponse
 
 # Index view for blog
 def blog_view(request):
+    return render(request, 'blog/index.html')
+
+# View to create a blog
+def create_blog_view(request):
+
     return render(request, 'blog/index.html')
 
 # Profile pages for each users
