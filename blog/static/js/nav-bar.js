@@ -1,13 +1,6 @@
 //-----------Navigation Bar Start-------------
 
 //----nav bar右边的3个btn Start----//
-// Create Post Menu （+）
-var createpostmenu = document.querySelector(".createpost-menu");
-
-function createpostMenuToggle(){
-  createpostmenu.classList.toggle("createpost-menu-height");
-}
-
 
 // Setting Menu (用户头像)
 var settingsmenu = document.querySelector(".settings-menu");
@@ -36,9 +29,5 @@ const nav = document.querySelectorAll(".nav-tabShow");
 
 
 //--- Functions Start----//
-// Create Post
-createBtn.addEventListener('click', ()=>{
-  createpostMenuToggle();
-})
 
 //--- Functions End----//

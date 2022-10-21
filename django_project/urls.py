@@ -32,9 +32,13 @@ from users.views import (
 from blog.views import (
     blog_view,
     profile_view,
+    frontend_view,
 )
 
 urlpatterns = [
+    # frontend development
+    path('1', frontend_view, name="frontend"),
+
     # admin backend
     path('admin/', admin.site.urls),
 
