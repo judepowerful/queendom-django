@@ -1,6 +1,6 @@
 /*-----------------Create Post menu Start---------------------*/
 .menu-background{
-    display: block;
+    display: none;
     position: fixed;
     z-index: 2;
     left: 0;
