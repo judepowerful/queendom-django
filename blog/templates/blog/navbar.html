@@ -34,16 +34,18 @@
                 </a>
             
             </li>
+            {% if request.user.is_authenticated %}
             <li>
-                <a href="#3" class="create-post-icon"> <!--Post Icon-->
+                <a role="button" class="create-post-icon"> <!--Post Icon-->
                     <i class="fas fa-plus-circle"></i>
                 </a>
             </li>
             <li>
-                <a href="#2" class="nav-icon active" id="messages-notification" onclick="navigationsMenuToggle()"> <!--Notification Icon-->
+                <a class="nav-icon active" id="messages-notification" onclick="navigationsMenuToggle()"> <!--Notification Icon-->
                     <i class="fas fa-bell"><small class="notification-count">6</small></i>
                 </a>
             </li>
+            {% endif %}
             
         </ul>
         {% if request.user.is_authenticated %}

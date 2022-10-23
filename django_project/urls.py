@@ -30,7 +30,7 @@ from users.views import (
 )
 
 from blog.views import (
-    blog_view,
+    BlogView,
     profile_view,
     frontend_view,
 )
@@ -43,7 +43,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # index blog
-    path('', blog_view, name="index"),
+    path('', BlogView.as_view(), name="index"),
 
     # register, login, logout
     path('register/', registration_view, name="register"),

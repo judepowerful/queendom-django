@@ -111,6 +111,11 @@ nav{
     list-style: none;
     display: inline-block;
 }
+
+.nav-right ul li a{
+    cursor: pointer;
+}
+
 .nav-right ul li a i{
     color: #141e5f;
     width: 28px;

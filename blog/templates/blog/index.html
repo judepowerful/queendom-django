@@ -164,7 +164,48 @@
             
             <!--------Friend Post More End-------->
 
-            
+            <!--------All real posts Start-------->
+            {% for post in posts %}
+            <div class="self-post-container">
+                <div class="post-row">
+                    <div class="user-profile">
+                        <a href="/">
+                            <img src="{% static 'img/1.jpeg' %}">
+                        </a>
+                        <div class="post-user-profile">
+                            <p>{{ post.author.full_name }}</p>
+                            <span>{{ post.data_published }}</span>
+                        </div>
+                    </div>
+                    <a href="#"><i class="fas fa-ellipsis-v" onclick="selfmoreMenuToggle()"></i></a>
+
+        
+                </div>
+
+                <h1 class="post-text">
+                    {{ post.title }}
+                </h1>
+
+                <p class="post-text">
+                    {{ post.body }}
+                </p>
+                <img src="{{ post.image.url }}" class="post-img">
+
+                <div class="post-row">
+                    <div class="activity-icons">
+                        <div><i class="fas fa-heart"></i></div>
+                        <div><i class="fas fa-star"></i></div>
+                        <div><i class="fas fa-share"></i></div>
+                    </div>
+                    <div class="comment-box">
+                        <input type="text" placeholder="Comment...">
+                    </div>
+                    <a href="#"><i class="far fa-paper-plane"></i></a> <!--Comment-Send Icon-->
+                </div>
+            </div>
+            {% endfor %}
+            <!--------All real posts End-------->
+
             <!--------All Post No.1 Start-------->
             <div class="self-post-container">
                 <div class="post-row">

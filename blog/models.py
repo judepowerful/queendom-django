@@ -8,9 +8,8 @@ from django.dispatch import receiver
 import uuid
 
 def upload_location(instance, filename, **kwargs):
-    file_path = 'blog/{author_full_name}/{post_id}/{filename}'.format(
-        author_full_name = str(instance.author.full_name), 
-        title=str(instance.title), 
+    file_path = 'blog/{author_netid}/{post_id}/{filename}'.format(
+        author_netid = str(instance.author.netid),
         post_id = instance.id.hex,
         filename=filename,
         )
@@ -35,6 +34,6 @@ def submission_delete(sender, instance, **kwarg):
 
 def pre_save_blog_post_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
-        instance.slug = slugify(instance.author.full_name + "-" + instance.title + "-" + instance.id.hex)
+        instance.slug = slugify(instance.author.netid + "-" + instance.title + "-" + instance.id.hex)
 
 pre_save.connect(pre_save_blog_post_receiver, sender=BlogPost)
