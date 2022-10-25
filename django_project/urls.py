@@ -45,6 +45,9 @@ urlpatterns = [
     # index blog
     path('', BlogView.as_view(), name="index"),
 
+    # blog detail page
+    # path('<user_netid>/<post_id>')
+
     # register, login, logout
     path('register/', registration_view, name="register"),
     path('login/', login_view, name="login"),

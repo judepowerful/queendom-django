@@ -1,5 +1,6 @@
-*
+
 /*--------------Page Format Start-------------*/
+*
 {
     margin: 0;
     padding: 0;
@@ -10,13 +11,16 @@
     --color-white:hsl(252, 30%, 100%);
     --color-light:hsl(252, 30%, 95%);
     --color-gray:hsl(252, 15%, 65%);
-    --color-primary:#ab2222;
+    --color-primary:#ae2012;
     --color-secondary:#f28f1e;
     --color-dark:hsl(252, 30%, 17%);
     --color-balck:hsl(252, 30%, 10%);
     --color-pink:#ebc8c8;
+    --color-red: #bc4749;
 }
 body{
+    overflow: overlay;
+    height: 100%;
     background: #ffffff;
 }
 /*----三栏 Start----*/
@@ -167,12 +171,33 @@ hr{
     font-size: 10px;
     color: #9a9a9a;
 }
+
+.post-title{
+    font-size: 20px;
+    padding: 10px 0;
+    margin: 0px;
+    text-align:left
+}
+
+.post-title a{
+    color: var(--color-primary);
+    position: relative;
+    display: inline-block;
+    transition: .3s;
+    text-decoration: none;
+}
+
+.post-title a:hover {
+    color: var(--color-red);
+}
+
 .post-text{
     color: #000000;
     font-size: 15px;
     padding: 5px 0;
     text-align:left
 }
+
 .post-text span{
     color: #ab2222;
     font-weight: 500;

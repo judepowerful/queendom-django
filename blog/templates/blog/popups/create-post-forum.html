@@ -30,11 +30,23 @@
                         </div>
                         <textarea name="body" id="message" rows="8" placeholder="Post your ideas here..."></textarea><!--body-->
                         <div id="display_image"></div>
-                        <div class="add-post-links">
+                        <div class="file-upload">
+                            <div class="icon" id="file-upload-item">
+                                <i class="fas fa-images"></i>
+                            </div>
+                            <div class="up-header" id="file-upload-item">
+                                Drag photos here
+                            </div>
+                            <label type="button" for="image_input" class="file-upload-button" id="file-upload-item">
+                                Upload from computer
+                            </label>
+                            
+                        </div>
+                        <div class="post-forum-bottom">
                             <!--Icons of Post-->
-                            <input name="image" type="file" id="image_input" accept="image/*"  class="fas fa-camera">
+                            <input name="image" type="file" id="image_input" multiple accept="image/*">
                             <!--<a href="#"><i class="fas fa-grin-alt" onclick="feelingsMenuToggle()"> Feelings</i></a>-->
-                            <button class="btn" type="submit">Post</button>
+                            <button class="btn" type="submit" id="post-btn">Post</button>
                         </div>
                     </div>
                 </form>

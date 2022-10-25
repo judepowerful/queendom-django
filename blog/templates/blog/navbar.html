@@ -28,13 +28,13 @@
     <div class="nav-right">
         
         <ul> 
+            {% if request.user.is_authenticated %}
             <li>
                 <a href="{% url 'index'%}" class="nav-icon"> <!--Home Icon-->
                     <i class="fas fa-home"></i>
                 </a>
             
             </li>
-            {% if request.user.is_authenticated %}
             <li>
                 <a role="button" class="create-post-icon"> <!--Post Icon-->
                     <i class="fas fa-plus-circle"></i>
@@ -53,8 +53,10 @@
             <img src="{% static 'img/1.jpeg' %}" alt="">
         </div>
         {% else %}
-        <div class="nav-user-icon online" onclick="settingsMenuToggle()">
-            <img src="{% static 'img/log-icon.png' %}" alt="">
+        <div class="login-register-btn">
+            <a href="{% url 'login'%}">
+                Log in/Register
+            </a>
         </div>
         {% endif %}
     </div>

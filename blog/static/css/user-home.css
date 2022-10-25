@@ -39,6 +39,23 @@
     align-items:center;
     padding: 0;
 }
+
+.title-box button{
+    text-align: left;
+    color: #626262;
+    cursor: pointer;
+    width: 100%;
+    background: transparent;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    transition: 0.3s;
+}
+
+.title-box button:hover{
+    background: #e0e0e0;
+}
+
 .title-box input{
     width: 100%;
     background: transparent;
@@ -46,6 +63,7 @@
     outline: none;
     border: 0;
 }
+
 .add-post-links{
     display: flex;
     margin-top: 10px;

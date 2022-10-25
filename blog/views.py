@@ -55,5 +55,12 @@ def profile_view(request, pk):
     else:
         return render(request, 'blog/user-profile.html', {})
 
+def post_view(request, user_netid, post_id):
+    post = BlogPost.objects.filter(id=post_id).first()
+    if (post == None):
+        return HttpResponse("No matching post", content_type='text/plain')
+    else:
+        return render(request, 'blog/user-profile.html', {})
+
 def frontend_view(request):
     return render(request, 'blog/popups/create-post-forum.html')
