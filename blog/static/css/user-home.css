@@ -2,7 +2,6 @@
 /*Home Page Start*/
 /*--------------Write Post Start--------------*/
 .write-post-container{ /*Write*/
-    width: 93.5%;
     background: #fff;
     border-radius: 6px;
     padding: 20px;
@@ -545,5 +544,20 @@ button-bot:hover {
 }
 /*--Give Another Feedback Menu End--*/
 /*---------------Right content End--------------*/
+
+.post-img-slider{
+    align-items:center;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.post-img-slides{
+    max-height: 500px;
+    min-width: 760px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 /*------------------------Home Page End-----------------------*/
 

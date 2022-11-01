@@ -52,7 +52,9 @@ body{
     align-self: flex-start;
 }
 .main-content{ 
-    flex-basis: 47%;
+    width: 100%;
+    max-width: 800px;
+    /*----flex-basis: 47%;----*/
 }
 /*----三栏 End----*/
 /*--------------Page Format End-------------*/
@@ -150,7 +152,6 @@ hr{
 
 /*--------------Post Format Start-------------*/
 .self-post-container{
-    width: 93.5%;
     background: #fff;
     border-radius: 6px;
     padding: 20px;
@@ -206,10 +207,19 @@ hr{
     color: #ab2222;
     text-decoration: none;
 }
+
+.post-img-container{
+    position: relative;
+    background-color: black;
+    margin: 10px 0px;
+}
+
 .post-img{
-    width: 100%;
-    border-radius: 4px;
-    margin-bottom: 5px;
+    margin: auto;
+    vertical-align: middle;
+    max-width: 760px;
+    max-height: 500px;
+    object-fit: cover;
 }
 .post-row{
     display: flex;

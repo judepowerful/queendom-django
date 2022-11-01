@@ -31,6 +31,12 @@
                         <textarea name="body" id="message" rows="8" placeholder="Post your ideas here..."></textarea><!--body-->
                         <div id="display_image"></div>
                         <div class="file-upload">
+                            <!--
+                            <img src="{% static 'img/1.jpeg' %}" class="post-img" id="forum-post-img">
+                            <button id="delete-img-btn" class="img-btn fa-solid fa-trash" type="button" onclick="delete_input_files()"></button>
+                            <button id="prev-img-btn" class="img-btn-bg img-btn fa-solid fa-angle-left" type="button" onclick=""></button>
+                            <button id="next-img-btn" class="img-btn-bg img-btn fa-solid fa-angle-right" type="button" onclick=""></button>
+                            <button id="add-img-btn" class="img-btn-bg img-btn fa-solid fa-plus" type="button" onclick=""></button>-->
                             <div class="icon" id="file-upload-item">
                                 <i class="fas fa-images"></i>
                             </div>
@@ -44,7 +50,8 @@
                         </div>
                         <div class="post-forum-bottom">
                             <!--Icons of Post-->
-                            <input name="image" type="file" id="image_input" multiple accept="image/*">
+                            <input name="images" type="file" id="image_input" multiple accept="image/*" hidden/>
+                            <input name="add_more_imgs" type="file" id="add_more_imgs" multiple accept="image/*" hidden/>
                             <!--<a href="#"><i class="fas fa-grin-alt" onclick="feelingsMenuToggle()"> Feelings</i></a>-->
                             <button class="btn" type="submit" id="post-btn">Post</button>
                         </div>

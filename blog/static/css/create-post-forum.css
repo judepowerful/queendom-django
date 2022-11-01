@@ -78,7 +78,7 @@ select{
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 30px;
+    padding: 40px;
     background: #fcfcfc;
     border-radius: 20px;
     border: 2px dashed #cecece;
@@ -90,6 +90,7 @@ select{
  }
 
  .file-upload.uploaded{
+   border: none;
     padding: 0;
  }
 
@@ -113,28 +114,53 @@ select{
  }
 
  .file-upload img{
-    border-radius: 20px;
-    margin: 0;
+   max-width: 470px;
+   min-width: 470px;
+   max-height: 400px;
+   border-radius: 20px;
+   margin: 0;
  }
 
- .file-upload #delete-img-btn{
-    font-size: 20px;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    /* text-decoration: none; */
-    background: none;
-    /* border-radius: 50%; */
-    border: none;
+.img-btn-bg{
+   border: none;
+   font-size: 20px;
+   position: absolute;
+   font-size: 15px;
+   color: black;
+   width: 30px;
+   height: 30px;
+   text-align: center;
+   vertical-align: middle;
+   background: rgba(172, 172, 172, 0.8);
+   border-radius: 50%;
+   cursor: pointer;
+}
+
+.img-btn-bg:hover{
+
+   color: white;
+   background: #777777;
+}
+
+#delete-img-btn{
+   right: 15px;
+   top: 15px;
  }
 
- .file-upload #delete-img-btn:hover{
-    color: #ae2012;
- }
+#prev-img-btn{
+   left: 15px;
+   top: 50%;
+}
 
- .post-forum-bottom #image_input{
-    display: none;
- }
+#next-img-btn{
+   right: 15px;
+   top: 50%;
+}
+
+#add-img-btn{
+   right: 15px;
+   bottom: 15px;
+}
 
  .post-forum-bottom {
     display: flex;

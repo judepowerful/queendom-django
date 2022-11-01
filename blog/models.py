@@ -9,31 +9,33 @@ import uuid
 
 def upload_location(instance, filename, **kwargs):
     file_path = 'blog/{author_netid}/{post_id}/{filename}'.format(
-        author_netid = str(instance.author.netid),
-        post_id = instance.id.hex,
+        author_netid = str(instance.blogpost.author.netid),
+        post_id = instance.blogpost.id.hex,
         filename=filename,
         )
     return file_path
 
 class BlogPost(models.Model):
-    title                   = models.CharField(max_length=50, null=False, blank=False)
+    title                   = models.CharField(max_length=50, null=True, blank=True)
     body                    = models.TextField(max_length=5000, null=False, blank=False)
-    image                   = models.ImageField(upload_to=upload_location, null=False, blank=False)
     data_published          = models.DateTimeField(auto_now_add=True, verbose_name="data published")
     data_updated            = models.DateTimeField(auto_now_add=True, verbose_name="data updated")
     author                  = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     id                      = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    slug                    = models.SlugField(blank=True, unique=True)
+    slug                    = models.SlugField(max_length=100, blank=True, unique=True)
 
     def __str__(self):
-        return self.title
-
-@receiver(post_delete, sender=BlogPost)
-def submission_delete(sender, instance, **kwarg):
-    instance.image.delete(False)
+        return str(self.author.netid) + " / " + self.title + " / " + str(self.data_published)
 
 def pre_save_blog_post_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = slugify(instance.author.netid + "-" + instance.title + "-" + instance.id.hex)
 
 pre_save.connect(pre_save_blog_post_receiver, sender=BlogPost)
+
+class Image(models.Model):
+    blogpost = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=upload_location, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.blogpost.author.netid) + " / " + self.blogpost.title + " / " + str(self.blogpost.data_published)

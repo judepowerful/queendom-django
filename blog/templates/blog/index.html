@@ -197,8 +197,6 @@
                         </div>
                     </div>
                     <a href="#"><i class="fas fa-ellipsis-v" onclick="selfmoreMenuToggle()"></i></a>
-
-        
                 </div>
 
                 
@@ -212,7 +210,16 @@
                 <p class="post-text">
                     {{ post.body }}
                 </p>
-                <img src="{{ post.image.url }}" class="post-img">
+                
+                <div class="post-img-container post-img-slider" id="{{ post.id }}">
+                    {% for image in post.image_set.all %}
+                        <div class="post-img-slides">
+                            <img src="{{ image.image.url }}" class="post-img">
+                        </div>
+                    {% endfor %}
+                    <button id="prev-img-btn" class="img-btn-bg fa-solid fa-angle-left" type="button" onclick=""></button>
+                    <button id="next-img-btn" class="img-btn-bg fa-solid fa-angle-right" type="button" onclick="nav_next(this)"></button>
+                </div>
 
                 <div class="post-row">
                     <div class="activity-icons">
@@ -249,7 +256,12 @@
                 <p class="post-text">Hi everyone, I am a senior student at Queen's. 
                 We are initiating a student app. Subscribe <span>@Queendom</span> 
                 <a href="#">#Queendom</a></p>
-                <img src="{% static 'img/feed-image-1.png' %}" class="post-img">
+                <div class="post-img-container post-img-slider">
+                    <img src="{% static 'img/feed-image-1.png' %}" class="post-img">
+                    <button id="prev-img-btn" class="img-btn-bg fa-solid fa-angle-left" type="button" onclick=""></button>
+                    <button id="next-img-btn" class="img-btn-bg fa-solid fa-angle-right" type="button" onclick=""></button>
+                </div>
+                
 
                 <div class="post-row">
                     <div class="activity-icons">
@@ -266,7 +278,7 @@
             <!--------All Post No.1 End-------->
 
             <!--------All Post No.2 Start-------->
-            <div class="friend-post-container">
+            <div class="self-post-container">
                 <div class="post-row">
                     <div class="user-profile">
                         <a href="http://127.0.0.1:5500/Queendom/friend-profile.html">
