@@ -13,18 +13,22 @@
     <link rel="stylesheet" href="{% static 'css/navigation-bar.css' %}">
     <link rel="stylesheet" href="{% static 'css/user-profile.css' %}">
 
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
     <title>User-Home Page</title>
   </head>
   <body>
   {% include 'blog/navbar.html' %}
   {% include 'blog/popups/create-post-forum.html' %}
+
   {% block content %}
 
 
   {% endblock content %}
   
     <script src="{% static 'js/popup.js' %}"></script>
-    <script src="{% static 'js/index-img-slider.js' %}"></script>
+    
   </body>
 
   </html>

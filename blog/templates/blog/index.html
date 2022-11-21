@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% load static %}
+{% load id_change %}
 {% block content %}
 
 <!----------------Home Page Start----------------->
@@ -211,15 +212,25 @@
                     {{ post.body }}
                 </p>
                 
-                <div class="post-img-container post-img-slider" id="{{ post.id }}">
-                    {% for image in post.image_set.all %}
-                        <div class="post-img-slides">
-                            <img src="{{ image.image.url }}" class="post-img">
-                        </div>
-                    {% endfor %}
-                    <button id="prev-img-btn" class="img-btn-bg fa-solid fa-angle-left" type="button" onclick=""></button>
-                    <button id="next-img-btn" class="img-btn-bg fa-solid fa-angle-right" type="button" onclick="nav_next(this)"></button>
-                </div>
+                {% if post.image_set.count != 0 %}
+                <section id="{{ post.id.hex|to_splider_id }}" class="splide" aria-label="Beautiful Images">
+                    <div class="splide__track">
+                            <ul class="splide__list">
+                                {% for image in post.image_set.all %}
+                                <li class="splide__slide">
+                                    <img src="{{ image.image.url }}" alt="">
+                                </li>
+                                {% endfor %}
+                            </ul>
+                    </div>
+                </section>
+                
+                <script>
+                    new Splide( '#{{ post.id.hex|to_splider_id }}', {
+
+                    } ).mount();
+                </script>
+                {% endif %}
 
                 <div class="post-row">
                     <div class="activity-icons">

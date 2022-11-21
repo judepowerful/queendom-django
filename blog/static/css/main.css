@@ -195,7 +195,7 @@ hr{
 .post-text{
     color: #000000;
     font-size: 15px;
-    padding: 5px 0;
+    padding: 15px 0;
     text-align:left
 }
 
@@ -225,6 +225,7 @@ hr{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 20px;
 }
 .post-row i:hover{
     color: #ab2222;
@@ -316,4 +317,9 @@ hr{
     to{
         opacity: 0;
     }
+}
+
+.splide{
+    background-color: #000000;
+    
 }

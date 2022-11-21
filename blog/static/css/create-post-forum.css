@@ -90,8 +90,9 @@ select{
  }
 
  .file-upload.uploaded{
+   display: block;
    border: none;
-    padding: 0;
+   padding: 0;
  }
 
  .file-upload .icon{
@@ -114,11 +115,13 @@ select{
  }
 
  .file-upload img{
-   max-width: 470px;
-   min-width: 470px;
-   max-height: 400px;
+   object-fit: cover;
+   width: 470px;
+   height: 247px;
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
    border-radius: 20px;
-   margin: 0;
  }
 
 .img-btn-bg{
@@ -173,5 +176,9 @@ select{
     margin-top: 20px;
     margin-left: 0px;
     margin-right: 0px;
+ }
+ 
+ #upload_img{
+   border-radius: 20px;
  }
  /*-----------------Create Post menu End---------------------*/
