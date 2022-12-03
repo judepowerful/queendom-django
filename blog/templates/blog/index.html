@@ -232,20 +232,61 @@
                 </script>
                 {% endif %}
 
-                <div class="post-row">
+                <div class="post-bottom">
                     <div class="activity-icons">
-                        <div><i class="fas fa-heart"></i></div>
-                        <div><i class="fas fa-star"></i></div>
-                        <div><i class="fas fa-share"></i></div>
+                        <div>
+                            <button id="like-button" value="{{post.id}}">
+                                    <i class="fas fa-heart">
+                                        <span class="" id="like_count">{{post.like_count}}</span>
+                                    </i>
+                            </button>
+                        </div>
+                        <div>
+                            <button id="fav-button" value="{{post.id}}">
+                                    <i class="fas fa-star"></i>
+                            </button>
+                        </div>
+                        <div>
+                            <button id="share-button" value="{{post.id}}">
+                                    <i class="fas fa-share"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="comment-box">
                         <input type="text" placeholder="Comment...">
                     </div>
-                    <a href="#"><i class="far fa-paper-plane"></i></a> <!--Comment-Send Icon-->
+                    <div class="send-comment">
+                        <button id="comment-button" value="{{post.id}}">
+                            <i class="far fa-paper-plane fa-lg"></i> <!--Comment-Send Icon-->
+                        </button>
+                    </div>
                 </div>
+                
             </div>
             {% endfor %}
             <!--------All real posts End-------->
+
+            <script>
+                $(document).on('click', '#like-button', function(e){
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: '{% url "blog:like" %}',
+                        data: {
+                            postid: $('#like-button').val(),
+                            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                            action: 'post'
+                        },
+                        success: function (json) {
+                            document.getElementById("like_count").innerHTML = json['result']
+                            console.log(json)
+                        },
+                        errpr: function (xhr, errmsg, err){
+
+                        }
+                    });
+                })
+            </script>
 
             <!--------All Post No.1 Start-------->
             <div class="self-post-container">

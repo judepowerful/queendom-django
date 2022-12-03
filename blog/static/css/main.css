@@ -224,12 +224,19 @@ hr{
 .post-row{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-top: 20px;
 }
-.post-row i:hover{
-    color: #ab2222;
+
+.post-row a{
+    margin-left: auto;
 }
+
+.post-bottom{
+    margin-top: 15px;
+    padding: 0px 5px;
+    display: flex;
+    align-items: center;
+}
+
 .activity-icons div img{
     width: 18px;
     margin-right: 10px;
@@ -242,7 +249,7 @@ hr{
 }
 .comment-box{
     background:#efefef;
-    width: 430px;
+    width: 520px;
     border-radius: 20px;
     display: flex;
     align-items:center;
@@ -255,8 +262,20 @@ hr{
     outline: none;
     border: 0;
 }
-.post-row a{
-    color: #9a9a9a;
+
+.send-comment{
+    margin-left: auto;
+}
+.post-bottom i{
+    color: #626262;
+}
+.post-bottom i:hover{
+    color: #ab2222;
+}
+.post-bottom button{
+    cursor: pointer;
+    border: none;
+    background: transparent;
 }
 /*--------------Post Format End-------------*/
 
