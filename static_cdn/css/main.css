@@ -1,0 +1,344 @@
+
+/*--------------Page Format Start-------------*/
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+}
+/*--Basic Color--*/
+:root{ 
+    --color-white:hsl(252, 30%, 100%);
+    --color-light:hsl(252, 30%, 95%);
+    --color-gray:hsl(252, 15%, 65%);
+    --color-primary:#ae2012;
+    --color-secondary:#f28f1e;
+    --color-dark:hsl(252, 30%, 17%);
+    --color-balck:hsl(252, 30%, 10%);
+    --color-pink:#ebc8c8;
+    --color-red: #bc4749;
+}
+body{
+    overflow: overlay;
+    height: 100%;
+    background: #ffffff;
+}
+/*----三栏 Start----*/
+.cover{
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    transition: opacity 1s ease-in-out;
+    
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 5%;
+    animation: fadeIn 1s;
+}
+.left-sidebar{
+    flex-basis: 25%;
+    position: sticky;
+    top: 70px;
+    align-self: flex-start;
+}
+.right-sidebar{
+    flex-basis: 25%;
+    position: sticky;
+    top: 70px;
+    align-self: flex-start;
+}
+.main-content{ 
+    width: 100%;
+    max-width: 800px;
+    /*----flex-basis: 47%;----*/
+}
+/*----三栏 End----*/
+/*--------------Page Format End-------------*/
+
+
+/*--------------Font Format Start-------------*/
+p{
+    font-size: 100%;
+    text-align: center;
+}
+h1{
+    margin-top: 10px;
+    margin-bottom: 35px;
+    font-size: 1.5rem;
+}
+/*--------------Font Format Start-------------*/
+
+
+/*---------------Buttons Format Start-------------*/
+/*---profile Page的选项btn Start---*/
+.btn-view-post {
+    width: 265px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    height: 35px;
+    margin-left: 20px;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 19px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+.btn-view-post:hover {
+    background-color: #ebc8c8;
+  }
+/*---profile Page的选项btn End---*/
+
+/*--Word btn--*/
+.wordbtn {
+    display: flex;
+    font-family: "Poppins", sans-serif;
+    background: none;
+    cursor: pointer;
+    color:#ab2222;
+    font-weight: 500;
+    font-size: 0.7rem;
+}
+.wordbtn:hover{
+    text-decoration: underline;
+}
+/*--Red Btn--*/
+.btn { 
+    left:50%;
+    width: 200px;
+    background-color: #b02828;
+    border: none;
+    outline: none;
+    height: 35px;
+    border-radius: 49px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 55px;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 0 2px 5px  rgba(0, 0, 0, 0.6);
+  }
+.btn:hover {
+background-color: #f28f1e;
+}
+
+/*---------------Buttons Format End-------------*/
+
+
+/*--------------分割线 Start-------------*/
+.line{
+    position: absolute;
+    bottom: 65px;
+    width: 100%;
+    height: 1px;
+    background: #626262;
+}
+hr{
+    border: 0;
+    height: 1px;
+    background: #9a9a9a;
+    margin: 15px 0;
+}
+/*--------------分割线 End-------------*/
+
+
+/*--------------Post Format Start-------------*/
+.self-post-container{
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px;
+    color: #626262;
+    margin: 20px 0;
+    box-shadow: 2px 5px 20px rgba(119, 119, 119, .5);
+}
+.friend-post-container{
+    width: 93.5%;
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px;
+    color: #626262;
+    margin: 20px 0;
+    box-shadow: 2px 5px 20px rgba(119, 119, 119, .5);
+}
+.post-user-profile span{
+    font-size: 10px;
+    color: #9a9a9a;
+}
+
+.post-title{
+    font-size: 20px;
+    padding: 10px 0;
+    margin: 0px;
+    text-align:left
+}
+
+.post-title a{
+    color: var(--color-primary);
+    position: relative;
+    display: inline-block;
+    transition: .3s;
+    text-decoration: none;
+}
+
+.post-title a:hover {
+    color: var(--color-red);
+}
+
+.post-text{
+    color: #000000;
+    font-size: 15px;
+    padding: 15px 0;
+    text-align:left
+}
+
+.post-text span{
+    color: #ab2222;
+    font-weight: 500;
+}
+.post-text a{
+    color: #ab2222;
+    text-decoration: none;
+}
+
+.post-img-container{
+    position: relative;
+    background-color: black;
+    margin: 10px 0px;
+}
+
+.post-img{
+    margin: auto;
+    vertical-align: middle;
+    max-width: 760px;
+    max-height: 500px;
+    object-fit: cover;
+}
+.post-row{
+    display: flex;
+    align-items: center;
+}
+
+.post-row a{
+    margin-left: auto;
+}
+
+.post-bottom{
+    margin-top: 15px;
+    padding: 0px 5px;
+    display: flex;
+    align-items: center;
+}
+
+.activity-icons div img{
+    width: 18px;
+    margin-right: 10px;
+}
+.activity-icons div{
+    display: inline-flex;
+    align-items: center;
+    margin-right: 30px;
+    font-size: 13px;
+}
+.comment-box{
+    background:#efefef;
+    width: 520px;
+    border-radius: 20px;
+    display: flex;
+    align-items:center;
+    padding: 0 15px;
+}
+.comment-box input{
+    width: 100%;
+    background: transparent;
+    padding: 10px;
+    outline: none;
+    border: 0;
+}
+
+.send-comment{
+    margin-left: auto;
+}
+.post-bottom i{
+    color: #626262;
+}
+.post-bottom i:hover{
+    color: #ab2222;
+}
+.post-bottom button{
+    cursor: pointer;
+    border: none;
+    background: transparent;
+}
+/*--------------Post Format End-------------*/
+
+
+
+/*--------------Popup Box Format Start-------------*/
+.header{
+    height: 68px;
+    background: #ab2222;
+    overflow: hidden;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 2px 3px rgba(119, 119, 119, .5);
+}
+.header h2{
+    color: white;
+    padding-left: 32px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 20px;
+}
+.fa-times{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/*--------------Popup Box Format End-------------*/
+
+
+/*--------------Footer Format Start-------------*/
+.footer{
+    text-align: center;
+    color: #9a9a9a;
+    padding: 10px;
+    font-size: 13px;
+}
+/*--------------Footer Format End-------------*/
+
+
+/*--------------Animations-------------*/
+@keyframes fadeIn { /*Fade In Animation*/
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut { /*Fade In Animation*/
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+
+.splide{
+    background-color: #000000;
+    
+}

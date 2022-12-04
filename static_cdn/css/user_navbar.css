@@ -1,0 +1,25 @@
+*{
+    margin:0;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+
+    background: #ffffff;
+    padding: 10px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    box-shadow: 2px 4px 20px rgba(119, 119, 119, .5);
+}
+
+.logo img{
+    margin-top: 2px;
+    height: 39px;
+}
+.nav-left, .nav-right{
+    display: flex;
+    align-items: center;
+}

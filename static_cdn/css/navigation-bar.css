@@ -1,0 +1,324 @@
+:root{
+    --color-white:hsl(252, 30%, 100%);
+    --color-light:hsl(252, 30%, 95%);
+    --color-gray:hsl(252, 15%, 65%);
+    --color-primary:#ae2012;
+    --color-secondary:#f28f1e;
+    --color-dark:hsl(252, 30%, 17%);
+    --color-balck:hsl(252, 30%, 10%);
+    --color-hover-red: #bc4749;
+}
+
+body{
+    background: #ffffff;
+}
+
+
+/*-------------------Navigation Bar Start------------------*/
+nav{
+    display: flex;
+    align-items: center;
+    margin-right: 0;
+    padding: 8px 5%;
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    box-shadow: 2px 2px 2px rgba(161, 161, 161, 0.5);
+
+}
+
+.logo img{
+    margin-top: 2px;
+    height: 39px;
+
+}
+.nav-left, .nav-right{
+    display: flex;
+    flex-basis: 25%;
+    position: sticky;
+    min-width: 26.5%;
+}
+
+.nav-left-inner{
+    position: sticky;
+    left: 1000px;
+}
+.nav-middle{
+    flex-basis: 45.5%;
+    margin: auto;
+
+}
+
+.nav-user-icon{
+    margin-left: 30px;
+}
+.nav-user-icon img{
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.navbar a {
+    float: right;
+    color: black;
+    text-align: baseline;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+.navbar a:hover {
+    color: var(--color-primary)
+}
+.search-box{
+    margin: auto;
+}
+.search-box-inner{
+    background:#efefef;
+    width: 350px;
+    border-radius: 20px;
+    display: flex;
+    align-items:center;
+    padding: 0 15px;
+    margin: auto;   
+}
+.search-box img{
+    width: 15px;
+}
+.search-box input{
+    width: 100%;
+    background: transparent;
+    padding: 10px;
+    outline: none;
+    border: 0;
+}
+
+.nav-right{
+    text-align: center;
+}
+
+.nav-right ul{
+    display: flex;
+    align-items: center;
+}
+
+.nav-right ul li{
+    margin-right: 30px;
+    list-style: none;
+    display: inline-block;
+}
+
+.nav-right ul li a{
+    cursor: pointer;
+}
+
+.nav-right ul li a i{
+    color: #141e5f;
+    width: 28px;
+}
+
+.nav-right ul li a i:hover{
+    color: rgb(169, 29, 29);
+}
+
+.nav-right .login-register-btn a{
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    color: white;
+    display: flex;
+    background-color: var(--color-primary);
+    text-decoration: none;
+    padding: 10px 16px;
+}
+
+.nav-right .login-register-btn a:hover{
+    background-color: var(--color-hover-red);
+}
+
+/*----Notification Count----*/
+.notification-count{
+    background-color: var(--color-primary);
+    color: #fff;
+    font-size: 0.7rem;
+    width: fit-content;
+    border-radius: 0.8rem;
+    padding: 0.1rem 0.4rem;
+    position: relative;
+    top: -.5rem;
+    left: -10;
+}
+.online{ /*online status of user*/
+    position: relative;
+}
+.online::after{
+    content: '';
+    width: 5px;
+    height: 5px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: #41db51;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.nav-icon .active{
+    background: #9a9a9a;
+}
+/*-------------------Navigation Bar End------------------*/
+
+
+/*-------------------Setting menu Start------------------*/
+.settings-menu{
+    position: absolute;
+    width: 90%;
+    max-width: 350px;
+    height: 410px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    top: 108%;
+    right: 5%;
+    max-height: 0;
+    transition: max-height 0.3s;
+}
+.settings-menu-height{
+    max-height: 150px;
+}
+.settings-menu-inner{
+   padding: 20px; 
+}
+/*----User Profile----*/
+h2{
+    margin-left: 2px;
+    font-size: 1rem;
+}
+.user-profile{
+    display: flex;
+    align-items: center;
+}
+.user-profile img{
+    width: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.user-profile small{
+    padding-right: 10px;
+    font-size: 12px;
+}
+.user-profile a{
+    font-size: 12px;
+    color: #ab2222;
+    text-decoration: none;
+}
+.settings-menu hr{ /*setting menu分割线*/
+    border: 0;
+    height: 1px;
+    background: #9a9a9a;
+    margin: 15px 0;
+}
+.setting-links{
+    display: flex;
+    align-items: cneter;
+    margin: 15px 0;
+}
+.setting-links .settings-icon{
+    width: 38px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.setting-links a{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #626262;
+}
+/*-----------------Setting menu End---------------------*/
+
+/*-----------------Navigation menu Start---------------------*/
+.navigations-menu{
+    position: absolute;
+    width: 90%;
+    max-width: 350px;
+    height: 470px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    top: 108%;
+    right: 19%;
+    max-height: 0;
+    transition: max-height 0.3s;
+}
+.navigations-menu-height{
+    max-height: 470px;
+}
+.navigations-menu-inner{
+   padding: 20px; 
+}
+.navigations-menu hr{ /*setting menu分割线*/
+    border: 0;
+    height: 1px;
+    background: #9a9a9a;
+    margin: 15px 0;
+}
+.btn {
+    left:50%;
+    width: 200px;
+    background-color: #b02828;
+    border: none;
+    outline: none;
+    height: 35px;
+    border-radius: 49px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 55px;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 0 2px 5px  rgba(0, 0, 0, 0.6);
+  }
+  .btn:hover {
+    background-color: #f28f1e;
+  }
+
+.navigation-text{
+    color: #000000;
+    font-size: 15px;
+    padding: 5px 0;
+    text-align:left
+}
+.navigation-text span{
+    color: #b02828;
+    font-weight: 500;
+}
+.navigation-time{
+    color: #9a9a9a;
+    font-size: 13px;
+    text-align:left
+}
+.navigations-menu-inner i{
+    color: #ab2222;
+}
+.wordbtn {
+    width: 65px;
+    height: 60px;
+    margin: 5px 5px;
+    font-family: "Poppins", sans-serif;
+    background: none;
+    position: sticky;
+    left: 260px;
+    border-color: #ab2222;
+    cursor: pointer;
+    color:#ab2222;
+    font-weight: 500;
+    font-size: .5rem;
+  }
+  
+  .wordbtn:hover{
+    box-shadow: none;
+  }
+/*-----------------Navigation menu End---------------------*/
