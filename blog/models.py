@@ -10,7 +10,7 @@ import uuid
 def upload_location(instance, filename, **kwargs):
     file_path = 'blog/{author_netid}/{post_id}/{filename}'.format(
         author_netid = str(instance.blogpost.author.netid),
-        post_id = instance.blogpost.id.hex,
+        post_id = str(instance.blogpost.id),
         filename=filename,
         )
     return file_path
@@ -23,13 +23,15 @@ class BlogPost(models.Model):
     author                  = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     id                      = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     slug                    = models.SlugField(max_length=100, blank=True, unique=True)
+    likes                   = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like', default=None, blank=True)
+    like_count              = models.BigIntegerField(default='0')
 
     def __str__(self):
         return str(self.author.netid) + " / " + self.title + " / " + str(self.data_published)
 
 def pre_save_blog_post_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
-        instance.slug = slugify(instance.author.netid + "-" + instance.title + "-" + instance.id.hex)
+        instance.slug = slugify(instance.author.netid + "-" + instance.title + "-" + str(instance.id))
 
 pre_save.connect(pre_save_blog_post_receiver, sender=BlogPost)
 

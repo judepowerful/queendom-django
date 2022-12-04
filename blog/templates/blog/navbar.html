@@ -4,7 +4,7 @@
     <!--left side navigation bar start-->
     <div class="nav-left">
         <div class="nav-left-inner">
-            <a href="{% url 'index'%}">
+            <a href="{% url 'blog:index'%}">
                 <div class="logo"><img src="{% static 'img/logo.png' %}"></div>
             </a>
         </div>
@@ -30,7 +30,7 @@
         <ul> 
             {% if request.user.is_authenticated %}
             <li>
-                <a href="{% url 'index'%}" class="nav-icon"> <!--Home Icon-->
+                <a href="{% url 'blog:index'%}" class="nav-icon"> <!--Home Icon-->
                     <i class="fas fa-home"></i>
                 </a>
             
