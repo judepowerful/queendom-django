@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-# import django_heroku
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -137,7 +136,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
-# django_heroku.settings(locals())
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'frontend/build/static')
 # ]
