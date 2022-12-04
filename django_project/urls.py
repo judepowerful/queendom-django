@@ -43,7 +43,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # index blog
-    path('', include('blog.urls', namespace='blog')),
+    path('', BlogView.as_view(), name="index"),
 
     # blog detail page
     # path('<user_netid>/<post_id>')

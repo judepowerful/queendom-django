@@ -70,7 +70,7 @@ def registration_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('blog:index')
+    return redirect('index')
 
 
 
@@ -98,7 +98,7 @@ def login_view(request):
             user = authenticate(email=email, password=password)
             if (user):
                 login(request, user)
-                return redirect("blog:index")
+                return redirect("index")
 
             # if password incorrect or email not activate
             else:
@@ -138,4 +138,4 @@ def activate(request, uidb64, token):
 
         return render(request, 'users/email_verified.html')  
     else:  
-        return HttpResponse('Activation link is invalid!')
+        return HttpResponse('Activation link is invalid!')  
