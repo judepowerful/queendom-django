@@ -8,6 +8,13 @@
     color: #626262;
     box-shadow: 2px 5px 20px rgba(119, 119, 119, .5);
 }
+
+.write-post-container .user-profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .user-profile{
     display: flex;
     align-items: center;
@@ -29,7 +36,7 @@
 }
 .post-input-container{
     padding-left: 55px;
-    padding-top: 20px;
+    padding-top: 5px;
 }
 .title-box{
     background:#efefef;
@@ -40,6 +47,7 @@
 }
 
 .title-box button{
+    font-size: .9375rem;
     text-align: left;
     color: #626262;
     cursor: pointer;
@@ -75,6 +83,11 @@
     font-size: 13px;
     color: #626262;
 }
+
+.add-post-links a i{
+    margin-right: 5px;
+}
+
 .add-post-links input{
     margin-top: 10px;
     text-decoration: none;

@@ -33,16 +33,34 @@
                     </div>
 
                     {% endfor %}
+
+                    <div class="show-p">
+                        <input type="checkbox" id="showpass"onclick="showPasswordFunction()">
+                        Show Password
+                    </div>
+
                     <div class="form-group form-button">
                         <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                     </div>
                 </form>
                 
+                
 
+                
                 <div class = "form-group form-button">
                     <a href="{% url 'password_reset'%}" class="wordbtn" id="forgot-password-btn" >Forgot Password?</a>
                 </div>
                 
+                <script>
+                    function showPasswordFunction() {
+                        var x = document.getElementById("id_password");
+                        if (x.type === "password") {
+                            x.type = "text";
+                        } else {
+                            x.type = "password";
+                        }
+                    }
+                </script>
             </div>
         </div>
     </div>

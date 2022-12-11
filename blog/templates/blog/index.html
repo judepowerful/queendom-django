@@ -71,11 +71,11 @@
                     <div class="add-post-links">
                         <!--Icons of Post-->
                         {% if request.user.is_authenticated %}
-                        <a style="cursor: pointer;"><i class="fas fa-camera" onclick="openCreatePostMenu()"> Photos</i></a>
-                        <a style="cursor: pointer;"><i class="fas fa-grin-alt" onclick="openCreatePostMenu()"> Feelings</i></a>
+                        <a style="cursor: pointer;"><i class="fas fa-camera" onclick="openCreatePostMenu()"></i>PHOTOS</a>
+                        <!--<a style="cursor: pointer;"><i class="fas fa-grin-alt" onclick="openCreatePostMenu()"></i>FEELINGS</a>-->
                         {% else %}
-                        <a style="cursor: pointer;"><i class="fas fa-camera"> Photos</i></a>
-                        <a style="cursor: pointer;"><i class="fas fa-grin-alt"> Feelings</i></a>
+                        <a style="cursor: pointer;"><i class="fas fa-camera"></i>Photos</a>
+                        <!--<a style="cursor: pointer;"><i class="fas fa-grin-alt"> Feelings</i></a>-->
                         {% endif %}
                     </div>
                     
@@ -186,7 +186,7 @@
 
             <!--------All real posts Start-------->
             {% for post in posts %}
-            <div class="self-post-container">
+            <div class="self-post-container" id="{{ post.id }}">
                 <div class="post-row">
                     <div class="user-profile">
                         <a href="/">
@@ -236,30 +236,41 @@
                     <div class="activity-icons">
                         <div>
                             <button id="like-button" value="{{post.id}}">
-                                    <i class="fas fa-heart">
-                                        <span class="" id="like_count">{{post.like_count}}</span>
+                                    <i class="fas fa-heart fa-lg like-i 
+                                    {% if post.likes|users_liked:request.user.email %}
+                                     active
+                                    {% endif %}">
+                                        
+                                        <span class="like_count" id="like_count">
+                                            {% if post.like_count != 0 %}
+                                                    {{post.like_count}}
+                                            {% endif %}
+                                        </span>
+                                        
                                     </i>
                             </button>
                         </div>
                         <div>
                             <button id="fav-button" value="{{post.id}}">
-                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star fa-lg"></i>
                             </button>
                         </div>
                         <div>
                             <button id="share-button" value="{{post.id}}">
-                                    <i class="fas fa-share"></i>
+                                    <i class="fas fa-share fa-lg"></i>
                             </button>
                         </div>
                     </div>
                     <div class="comment-box">
                         <input type="text" placeholder="Comment...">
+
+                        <div class="send-comment">
+                            <button id="comment-button" value="{{post.id}}">
+                                <i class="far fa-paper-plane fa-lg"></i> <!--Comment-Send Icon-->
+                            </button>
+                        </div>
                     </div>
-                    <div class="send-comment">
-                        <button id="comment-button" value="{{post.id}}">
-                            <i class="far fa-paper-plane fa-lg"></i> <!--Comment-Send Icon-->
-                        </button>
-                    </div>
+                    
                 </div>
                 
             </div>
@@ -269,17 +280,32 @@
             <script>
                 $(document).on('click', '#like-button', function(e){
                     e.preventDefault();
+                    
+                    var postid = $(this).val();
+                    var currentPost = document.getElementById(postid);
+                    var currentPostLikeIcon = currentPost.getElementsByClassName("like-i")[0];
+
+                    if(currentPostLikeIcon.classList.contains("active")){
+                        currentPostLikeIcon.classList.remove("active");
+                    } else {
+                        currentPostLikeIcon.classList.add("active");
+                    }
+
+
                     $.ajax({
                         type: 'POST',
                         url: '{% url "blog:like" %}',
                         data: {
-                            postid: $('#like-button').val(),
+                            postid: postid,
                             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
                             action: 'post'
                         },
                         success: function (json) {
-                            document.getElementById("like_count").innerHTML = json['result']
-                            console.log(json)
+                            if (json['result'] != 0){
+                                currentPost.getElementsByClassName("like_count")[0].innerHTML = json['result']
+                            }else{
+                                currentPost.getElementsByClassName("like_count")[0].innerHTML = ""
+                            }
                         },
                         errpr: function (xhr, errmsg, err){
 

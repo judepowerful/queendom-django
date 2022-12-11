@@ -72,8 +72,8 @@
             <div class="user-profile"> <!--Line 1-->
                 <img src="{% static 'img/1.jpeg' %}">
                 <div>
-                    <h2>Ray Cai</h2>
-                    <a href="http://127.0.0.1:5500/Queendom/user-profile.html">See your profile</a>
+                    <h2>{{ request.user.full_name }}</h2>
+                    <a href="http://127.0.0.1:5500/Queendom/user-profile.html">See my profile</a>
                 </div>
             </div>
             <hr> <!--setting menu分割线-->          

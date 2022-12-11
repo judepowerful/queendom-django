@@ -278,6 +278,16 @@ figure {
   margin-bottom: 25px;
   overflow: hidden; }
 
+.show-p {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.show-p input[type=checkbox] {
+  width: auto;
+  margin-right: 5px;
+}
+
 input {
   width: 100%;
   display: block;
@@ -305,17 +315,6 @@ input {
     input:focus:-moz-placeholder {
       color: #222; }
 
-input[type=checkbox]:not(old) {
-  width: 2em;
-  margin: 0;
-  padding: 0;
-  font-size: 1em;
-  display: none; }
-
-input[type=checkbox]:not(old) + label {
-  display: inline-block;
-  line-height: 1.5em;
-  margin-top: 6px; }
 
 input[type=checkbox]:not(old) + label > span {
   display: inline-block;

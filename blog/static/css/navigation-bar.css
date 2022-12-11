@@ -85,6 +85,7 @@ nav{
     width: 15px;
 }
 .search-box input{
+    font-size: .9375rem;
     width: 100%;
     background: transparent;
     padding: 10px;

@@ -87,8 +87,8 @@ def login_view(request):
         password = request.POST['password']
 
         # retrieve this account
-        user_account = Account.objects.get(email=email)
-
+        user_account = Account.objects.filter(email=email).first()
+        
         # check if account exists
         if(user_account):
             # if exists, check if account is active
