@@ -12,10 +12,10 @@
             <div class="create-post-container"> <!--Write-->
                 <div class="user-profile">
                     <a href="http://127.0.0.1:5500/Queendom/user-profile.html">
-                        <img src="{% static 'img/1.jpeg' %}">
+                        <img src="{{ request.user.profile.profileimg.url }}">
                     </a>
                     <div>
-                        <p>Ray Cai</p>
+                        <p>{{ request.user.full_name }}</p>
                         <select name="privacy" id="privacy">
                             <option value="Public">Public</option>
                             <option value="Privacy">Private</option>

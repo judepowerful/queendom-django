@@ -70,7 +70,7 @@ class Account(AbstractBaseUser):
 		return True
 
 class Profile(models.Model):
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
 	bio = models.TextField(blank=True)
 	profileimg = models.ImageField(upload_to=upload_location, default='default_profile_img.jpg')
 	location = models.CharField(max_length=100, blank=True)

@@ -9,25 +9,22 @@
     box-shadow: 2px 5px 20px rgba(119, 119, 119, .5);
 }
 
-.write-post-container .user-profile{
+.write-post-container .write-post-top{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.user-profile{
+.write-post-top{
     display: flex;
     align-items: center;
 }
-.user-profile img{
+.write-post-top img{
     width: 45px;
     border-radius: 50%;
     margin-right: 10px;
 }
-.user-profile small{
-    padding-right: 10px;
-    font-size: 12px;
-}
+
 .post-user-profile p{
     margin-bottom: -5px;
     font-weight: 500;
@@ -40,7 +37,7 @@
 }
 .title-box{
     background:#efefef;
-    width: 683.88px;
+    width: 100%;
     display: flex;
     align-items:center;
     padding: 0;

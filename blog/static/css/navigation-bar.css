@@ -23,7 +23,7 @@ nav{
     background: #ffffff;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     box-shadow: 2px 2px 2px rgba(161, 161, 161, 0.5);
 
 }
@@ -54,7 +54,7 @@ nav{
     margin-left: 30px;
 }
 .nav-user-icon img{
-    width: 30px;
+    width: 35px;
     border-radius: 50%;
     cursor: pointer;
 }

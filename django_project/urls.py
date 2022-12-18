@@ -26,6 +26,7 @@ from users.views import (
     logout_view,
     login_view,
     activate,
+    password_reset_view,
     test,
 )
 
@@ -57,9 +58,7 @@ urlpatterns = [
     path('<str:pk>/', profile_view, name='profile'),
 
     # password reset
-    path('accounts/password/reset/', auth_views.PasswordResetView.as_view(
-        template_name='users/password_reset/password_reset.html',
-        form_class = UserPasswordResetForm), name='password_reset'),
+    path('accounts/password/reset/', password_reset_view, name='password_reset'),
 
     path('accounts/password/reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset/password_reset_done.html'),
      name='password_reset_done'),
@@ -73,6 +72,7 @@ urlpatterns = [
     
     # path for email verification
     path('activate/<uidb64>/<token>', activate, name='activate'),  
+    
 ]
 
 

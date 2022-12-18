@@ -43,10 +43,10 @@
             
             <!--------Sent Post Area Start-------->
             <div class="write-post-container"> <!--Write-->
-                <div class="user-profile">
+                <div class="write-post-top">
                     {% if request.user.is_authenticated %}
                     <a href="{% url 'login' %}">
-                        <img src="{% static 'img/log-icon.png' %}">
+                        <img src="{{ request.user.profile.profileimg.url }}">
                     </a>
                     <div class="title-box">
                         <button type="button" onclick="openCreatePostMenu()">
@@ -190,7 +190,7 @@
                 <div class="post-row">
                     <div class="user-profile">
                         <a href="/">
-                            <img src="{% static 'img/1.jpeg' %}">
+                            <img src="{{ post.author.profile.profileimg.url }}">
                         </a>
                         <div class="post-user-profile">
                             <p>{{ post.author.full_name }}</p>
@@ -235,6 +235,8 @@
                 <div class="post-bottom">
                     <div class="activity-icons">
                         <div>
+                            
+                            {% if request.user.is_authenticated %}
                             <button id="like-button" value="{{post.id}}">
                                     <i class="fas fa-heart fa-lg like-i 
                                     {% if post.likes|users_liked:request.user.email %}
@@ -249,6 +251,16 @@
                                         
                                     </i>
                             </button>
+                            {% else %}
+                            <button id="like-button-inactive" value="{{post.id}}">
+                                <i class="fas fa-heart fa-lg like-i">
+                                    
+                                    <span class="like_count" id="like_count">
+                                    </span>
+                                    
+                                </i>
+                            </button>
+                            {% endif %}
                         </div>
                         <div>
                             <button id="fav-button" value="{{post.id}}">

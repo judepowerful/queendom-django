@@ -2,7 +2,7 @@ import json
 from multiprocessing import context
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout, login, authenticate
-from users.forms import RegistrationForm, AuthenticationForm
+from users.forms import RegistrationForm, AuthenticationForm, UserPasswordResetForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string 
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -11,9 +11,14 @@ from .tokens import account_activation_token
 
 from django.views import View
 from django.http import HttpResponse
-from django.core.mail import EmailMessage  
+from django.core.mail import EmailMessage, BadHeaderError 
 from users.models import Account, Profile
 from django.contrib.auth import get_user_model
+
+from django.http import HttpResponse
+from django.db.models.query_utils import Q
+from django.contrib.auth.tokens import default_token_generator
+
 
 def test(request):
     return render(request, 'users/email_verified.html')
@@ -139,3 +144,37 @@ def activate(request, uidb64, token):
         return render(request, 'users/email_verified.html')  
     else:  
         return HttpResponse('Activation link is invalid!')
+
+def password_reset_view(request):
+    if request.method == 'POST':
+        password_form = UserPasswordResetForm(request.POST)
+        if  password_form.is_valid():
+            data = password_form.cleaned_data['email']
+            user_email = Account.objects.filter(Q(email=data))
+            current_site = get_current_site(request)
+            if user_email.exists():
+                for user in user_email:
+                    subject = 'Password Reset'
+                    email_template_name = 'users/password_reset/password_reset_email.html'
+                    parameters = {
+                        'fullname': user.full_name,
+                        'email': user.email,
+                        'domain': current_site.domain,
+                        'site_name': 'Queendom',
+                        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                        'token': default_token_generator.make_token(user),
+                    }
+                    email = render_to_string(email_template_name, parameters)
+                    message = EmailMessage(subject, email, to=[user.email])
+                    message.content_subtype = 'html'
+                    try:
+                        message.send()
+                    except:
+                        return HttpResponse('Invalid Header')
+                    return redirect('password_reset_done')
+    else:
+        password_form = UserPasswordResetForm()
+    context = {
+        'password_form': password_form,
+    }
+    return render(request, 'users/password_reset/password_reset.html', context)
