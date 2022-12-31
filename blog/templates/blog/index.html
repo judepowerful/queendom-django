@@ -3,7 +3,6 @@
 {% load static %}
 {% load id_change %}
 {% block content %}
-
 <!----------------Home Page Start----------------->
 <div class="cover">
     <div class="container">
@@ -291,6 +290,41 @@
             {% endfor %}
             <!--------All real posts End-------->
 
+            <!--------All Post No.1 Start-------->
+            <div class="self-post-container">
+                <div class="post-row">
+                    <div class="user-profile">
+                        <a href="http://127.0.0.1:5500/Queendom/user-profile.html">
+                            <img src="img/profile-pic.png">
+                        </a>
+                        <div class="post-user-profile">
+                            <p>Ray Cai</p>
+                            <span>May 30 2022, 21:12 pm</span>
+                        </div>
+                    </div>
+                    <a href="#"><i class="fas fa-ellipsis-v" onclick="selfmoreMenuToggle()"></i></a>
+
+
+                </div>
+
+                <p class="post-text">Hi everyone, I am a senior student at Queen's. 
+                We are initiating a student app. Subscribe <span>@Queendom</span> 
+                <a href="#">#Queendom</a></p>
+                <img src="img/feed-image-1.png" class="post-img">
+
+                <div class="post-row">
+                    <div class="activity-icons">
+                        <div><i class="fas fa-heart"></i></div>
+                        <div><i class="fas fa-star"></i></div>
+                        <div><i class="fas fa-share"></i></div>
+                    </div>
+                    <div class="comment-box">
+                        <input type="text" placeholder="Comment...">
+                    </div>
+                    <a href="#"><i class="far fa-paper-plane"></i></a> <!--Comment-Send Icon-->
+                </div>
+            </div>
+            <!--------All Post No.1 End-------->
             <script>
                 $(document).on('click', '#like-button', function(e){
                     e.preventDefault();
@@ -328,7 +362,6 @@
                 })
             </script>
         </div>
-
         <!--Right side bar-->
         <div class="right-sidebar"></div>
     </div>
