@@ -1,7 +1,9 @@
 {% extends 'blog/base.html' %}
 
 {% load static %}
+{% load id_change %}
 {% block content %}
+
 <!--------Profile Page Start-------->
 <div class="container">
     <!--Left side bar-->
@@ -17,46 +19,140 @@
                     <p>Peace & Love</p>
                     <p>Health Studies</p>
                 </div>
-                <a href="#"><i class="fas fa-user-friends" onclick="friendMenuToggle()"></i></a>
-                <a href="http://127.0.0.1:5500/Queendom/edit.html"><i class="fas fa-cog"></i></a>
+                <!--<a href="#"><i class="fas fa-user-friends" onclick="friendMenuToggle()"></i></a>-->
+                <a href="http://127.0.0.1:5500/Queendom/edit.html"><i class="fa-solid fa-pen"></i>Edit Profile</a>
+            </div>
+
+            <div class="follow-info">
+                <a href="" class="follower">
+                    <span>
+                        10
+                    </span>
+                     Followers
+                </a>
+                <a href="" class="following">
+                    <span>
+                        20
+                    </span>
+                     Followings
+                </a>
             </div>
         </div>
         
         <!----Buttons Start---->
-        <button class="btn-view-post">1 POST</button>
-        <button class="btn-view-post">SAVED</button>
+        <div class="profile-list">
+            <button class="btn-view-post">1 POST</button>
+            <button class="btn-view-post">SAVED</button>
+        </div>
         <hr> <!--setting menu分割线-->
         <!----Buttons End---->
 
-        <div class="post-container">
+        <!--------All real posts Start-------->
+        {% for post in user_posts %}
+        <div class="self-post-container" id="{{ post.id }}">
             <div class="post-row">
                 <div class="user-profile">
-                    <img src="{% static 'img/1.jpeg' %}">
+                    <a href="/">
+                        <img src="{{ post.author.profile.profileimg.url }}">
+                    </a>
                     <div class="post-user-profile">
-                        <p>Ray Cai</p>
-                        <span>May 30 2022, 21:12 pm</span>
+                        <p>{{ post.author.full_name }}</p>
+                        <span>{{ post.data_published }}</span>
                     </div>
                 </div>
-                <a href="#"><i class="fas fa-ellipsis-v"></i></a> <!--More Icon-->
+                <a href="#"><i class="fas fa-ellipsis-v" onclick="selfmoreMenuToggle()"></i></a>
             </div>
 
-            <p class="post-text">Hi everyone, I am a senior student at Queen's. 
-            We are initiating a student app. Subscribe <span>@Queendom</span> 
-            <a href="#">#Queendom</a></p>
-            <img src="{% static 'img/feed-image-1.png' %}" class="post-img">
+            
+            <h2 class="post-title">
+                <a href="{{ post.author.netid }}/{{ post.id }}">
+                    {{ post.title }}
+                </a>
+            </h2>
+            
 
-            <div class="post-row">
+            <p class="post-text">
+                {{ post.body }}
+            </p>
+            
+            {% if post.image_set.count != 0 %}
+            <section id="{{ post.id.hex|to_splider_id }}" class="splide" aria-label="Beautiful Images">
+                <div class="splide__track">
+                        <ul class="splide__list">
+                            {% for image in post.image_set.all %}
+                            <li class="splide__slide">
+                                <img src="{{ image.image.url }}" alt="">
+                            </li>
+                            {% endfor %}
+                        </ul>
+                </div>
+            </section>
+            
+            <script>
+                new Splide( '#{{ post.id.hex|to_splider_id }}', {
+
+                } ).mount();
+            </script>
+            {% endif %}
+
+            <div class="post-bottom">
                 <div class="activity-icons">
-                    <div><i class="fas fa-heart"> Like</i></div>
-                    <div><i class="fas fa-share"> Share</i></div>
+                    <div class="icons">
+                        
+                        {% if request.user.is_authenticated %}
+                        <button id="like-button" value="{{post.id}}">
+                                <i class="fas fa-heart fa-lg like-i 
+                                {% if post.likes|users_liked:request.user.email %}
+                                active
+                                {% endif %}">
+                                    
+                                    <span class="like_count" id="like_count">
+                                    {% if post.like_count != 0 %}
+                                        {{post.like_count}}
+                                    {% endif %}
+                                    </span>
+                                    
+                                </i>
+                        </button>
+                        {% else %}
+                        <button id="like-button-inactive" value="{{post.id}}">
+                            <a style="text-decoration: none" href="{% url 'login' %}">
+                                <i class="fas fa-heart fa-lg like-i">
+                                
+                                <span class="like_count" id="like_count">
+                                </span>
+                                
+                                </i>
+                            </a>
+                        </button>
+                        {% endif %}
+                    </div>
+                    <div class="icons">
+                        <button id="fav-button" value="{{post.id}}">
+                                <i class="fas fa-star fa-lg"></i>
+                        </button>
+                    </div>
+                    <div class="icons">
+                        <button id="share-button" value="{{post.id}}">
+                                <i class="fas fa-share fa-lg"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="comment-box">
                     <input type="text" placeholder="Comment...">
-                </div>
-                <a href="#"><i class="far fa-paper-plane"></i></a> <!--Comment-Send Icon-->
 
+                    <div class="send-comment">
+                        <button id="comment-button" value="{{post.id}}">
+                            <i class="far fa-paper-plane fa-lg"></i> <!--Comment-Send Icon-->
+                        </button>
+                    </div>
+                </div>
+                
             </div>
+            
         </div>
+        {% endfor %}
+        <!--------All real posts End-------->
 
     </div>    
 

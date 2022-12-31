@@ -71,10 +71,10 @@
                     <div class="add-post-links">
                         <!--Icons of Post-->
                         {% if request.user.is_authenticated %}
-                        <a style="cursor: pointer;"><i class="fas fa-camera" onclick="openCreatePostMenu()"></i>PHOTOS</a>
+                        <a style="cursor: pointer;" onclick="openCreatePostMenu()"><i class="fas fa-camera"></i>Photos</a>
                         <!--<a style="cursor: pointer;"><i class="fas fa-grin-alt" onclick="openCreatePostMenu()"></i>FEELINGS</a>-->
                         {% else %}
-                        <a style="cursor: pointer;"><i class="fas fa-camera"></i>Photos</a>
+                        <a style="cursor: pointer;" href="{% url 'login' %}"><i class="fas fa-camera"></i>Photos</a>
                         <!--<a style="cursor: pointer;"><i class="fas fa-grin-alt"> Feelings</i></a>-->
                         {% endif %}
                     </div>
@@ -234,7 +234,7 @@
 
                 <div class="post-bottom">
                     <div class="activity-icons">
-                        <div>
+                        <div class="icons">
                             
                             {% if request.user.is_authenticated %}
                             <button id="like-button" value="{{post.id}}">
@@ -244,30 +244,32 @@
                                     {% endif %}">
                                         
                                         <span class="like_count" id="like_count">
-                                            {% if post.like_count != 0 %}
-                                                    {{post.like_count}}
-                                            {% endif %}
+                                        {% if post.like_count != 0 %}
+                                            {{post.like_count}}
+                                        {% endif %}
                                         </span>
                                         
                                     </i>
                             </button>
                             {% else %}
                             <button id="like-button-inactive" value="{{post.id}}">
-                                <i class="fas fa-heart fa-lg like-i">
+                                <a style="text-decoration: none" href="{% url 'login' %}">
+                                    <i class="fas fa-heart fa-lg like-i">
                                     
                                     <span class="like_count" id="like_count">
                                     </span>
                                     
-                                </i>
+                                    </i>
+                                </a>
                             </button>
                             {% endif %}
                         </div>
-                        <div>
+                        <div class="icons">
                             <button id="fav-button" value="{{post.id}}">
                                     <i class="fas fa-star fa-lg"></i>
                             </button>
                         </div>
-                        <div>
+                        <div class="icons">
                             <button id="share-button" value="{{post.id}}">
                                     <i class="fas fa-share fa-lg"></i>
                             </button>
@@ -325,116 +327,6 @@
                     });
                 })
             </script>
-
-            <!--------All Post No.1 Start-------->
-            <div class="self-post-container">
-                <div class="post-row">
-                    <div class="user-profile">
-                        <a href="http://127.0.0.1:5500/Queendom/user-profile.html">
-                            <img src="{% static 'img/1.jpeg' %}">
-                        </a>
-                        <div class="post-user-profile">
-                            <p>Ray Cai</p>
-                            <span>May 30 2022, 21:12 pm</span>
-                        </div>
-                    </div>
-                    <a href="#"><i class="fas fa-ellipsis-v" onclick="selfmoreMenuToggle()"></i></a>
-
-        
-                </div>
-
-                <p class="post-text">Hi everyone, I am a senior student at Queen's. 
-                We are initiating a student app. Subscribe <span>@Queendom</span> 
-                <a href="#">#Queendom</a></p>
-                <div class="post-img-container post-img-slider">
-                    <img src="{% static 'img/feed-image-1.png' %}" class="post-img">
-                    <button id="prev-img-btn" class="img-btn-bg fa-solid fa-angle-left" type="button" onclick=""></button>
-                    <button id="next-img-btn" class="img-btn-bg fa-solid fa-angle-right" type="button" onclick=""></button>
-                </div>
-                
-
-                <div class="post-row">
-                    <div class="activity-icons">
-                        <div><i class="fas fa-heart"></i></div>
-                        <div><i class="fas fa-star"></i></div>
-                        <div><i class="fas fa-share"></i></div>
-                    </div>
-                    <div class="comment-box">
-                        <input type="text" placeholder="Comment...">
-                    </div>
-                    <a href="#"><i class="far fa-paper-plane"></i></a> <!--Comment-Send Icon-->
-                </div>
-            </div>
-            <!--------All Post No.1 End-------->
-
-            <!--------All Post No.2 Start-------->
-            <div class="self-post-container">
-                <div class="post-row">
-                    <div class="user-profile">
-                        <a href="http://127.0.0.1:5500/Queendom/friend-profile.html">
-                            <img src="{% static 'img/2.jpeg' %}">
-                        </a>
-                        <div class="post-user-profile">
-                            <p>Jonas</p>
-                            <span>May 30 2022, 21:12 pm</span>
-                        </div>
-                    </div>
-                    <a href="#"><i class="fas fa-ellipsis-v" onclick="friendmoreMenuToggle()"></i></a>
-                </div>
-
-                <p class="post-text">Hi everyone, I am a senior student at Queen's. 
-                We are initiating a student app. Subscribe <span>@Queendom</span> 
-                <a href="#">#Queendom</a></p>
-                <img src="{% static 'img/feed-image-1.png' %}" class="post-img">
-
-                <div class="post-row">
-                    <div class="activity-icons">
-                        <div><i class="fas fa-heart"></i></div>
-                        <div><i class="fas fa-star"></i></div>
-                        <div><i class="fas fa-share"></i></div>
-                    </div>
-                    <div class="comment-box">
-                        <input type="text" placeholder="Comment...">
-                    </div>
-                    <a href="#"><i class="far fa-paper-plane"></i></a> <!--Comment-Send Icon-->
-                </div>
-            </div>
-            <!--------All Post No.2 End-------->
-
-            <!--------All Post No.3 Start-------->
-            <div class="self-post-container">
-                <div class="post-row">
-                    <div class="user-profile">
-                        <a href="http://127.0.0.1:5500/Queendom/user-profile.html">
-                            <img src="{% static 'img/1.jpeg' %}">
-                        </a>
-                        <div class="post-user-profile">
-                            <p>Ray Cai</p>
-                            <span>May 30 2022, 21:12 pm</span>
-                        </div>
-                    </div>
-                    <a href="#"><i class="fas fa-ellipsis-v" onclick="moreMenuToggle()"></i></a> <!--More Icon-->
-                </div>
-
-                <p class="post-text">Hi everyone, I am a senior student at Queen's. 
-                We are initiating a student app. Subscribe <span>@Queendom</span> 
-                <a href="#">#Queendom</a></p>
-                <img src="{% static 'img/feed-image-1.png' %}" class="post-img">
-
-                <div class="post-row">
-                    <div class="activity-icons">
-                        <div><i class="fas fa-heart"></i></div>
-                        <div><i class="fas fa-star"></i></div>
-                        <div><i class="fas fa-share"></i></div>
-                    </div>
-                    <div class="comment-box">
-                        <input type="text" placeholder="Comment...">
-                    </div>
-                    <a href="#"><i class="far fa-paper-plane"></i></a> <!--Comment-Send Icon-->
-                </div>
-            </div>
-            <!--------All Post No.3 End-------->
-
         </div>
 
         <!--Right side bar-->

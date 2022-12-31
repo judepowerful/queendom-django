@@ -50,7 +50,7 @@
         </ul>
         {% if request.user.is_authenticated %}
         <div class="nav-user-icon" onclick="settingsMenuToggle()">
-            <img src="{{ request.user.profile.profileimg.url }}" alt="">
+            <img id="nav_user_icon" src="{{ request.user.profile.profileimg.url }}" alt="">
         </div>
         {% else %}
         <div class="login-register-btn">
@@ -65,22 +65,28 @@
 
 
     <!----------------User setting menu Start----------------->
-    <div class="settings-menu">
+    <div class="settings-menu arrow-top" id="settings_menu">
 
-        <div class="settings-menu-inner">
+        <div class="settings-menu-inner" id="settings_menu">
             {% if request.user.is_authenticated %}
-            <div class="user-profile"> <!--Line 1-->
-                <img src="{{ request.user.profile.profileimg.url}}">
-                <div>
-                    <h2>{{ request.user.full_name }}</h2>
-                    <a href="http://127.0.0.1:5500/Queendom/user-profile.html">See my profile</a>
+            
+            <a href="{% url 'self_profile' %}" class="user-profile">
+                <img src="{{ request.user.profile.profileimg.url}}" id="settings_menu">
+                <div id="settings_menu">
+                    <h2 id="settings_menu">{{ request.user.full_name }}</h2>
                 </div>
-            </div>
-            <hr> <!--setting menu分割线-->          
-            <div class="setting-links"> <!--Line 6-->
+            </a>
+            
+
+            <hr> <!--setting menu分割线-->
+
+            <a href="{% url 'logout' %}" class="setting-links">
                 <img src="{% static 'img/logout.png' %}" class="settings-icon">
-                <a href="{% url 'logout' %}">Logout <img src="{% static 'img/arrow.png' %}" width="10px"></a>
-            </div>
+                <div class="setting-links-content">
+                    Logout
+                    <img src="{% static 'img/arrow.png' %}" width="10px">
+                </div>
+            </a>
 
             {% else %}
             <div class="user-profile"> <!--Line 1-->

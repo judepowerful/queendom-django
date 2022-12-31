@@ -49,7 +49,18 @@ def profile_view(request, pk):
     if (user_found == None):
         return HttpResponse("No matching account", content_type='text/plain')
     else:
-        return render(request, 'blog/user-profile.html', {})
+        user_posts = BlogPost.objects.filter(author=user_found).order_by('-data_published')
+        context['user_posts'] = user_posts
+        if(user_found == request.user):
+            return render(request, 'blog/user-profile.html', context)
+        else:
+            return HttpResponse("To see other people profile is still working on process", content_type='text/plain')
+
+@login_required(login_url='/login/')
+def self_profile_view(request):
+    context = {}
+    user_netid = request.user.netid
+    return redirect("/%s/" % user_netid)
 
 def post_view(request, user_netid, post_id):
     post = BlogPost.objects.filter(id=post_id).first()
@@ -57,6 +68,7 @@ def post_view(request, user_netid, post_id):
         return HttpResponse("No matching post", content_type='text/plain')
     else:
         return render(request, 'blog/user-profile.html', {})
+
 
 @login_required(login_url='/login/')
 def like(request):

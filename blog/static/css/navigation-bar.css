@@ -173,25 +173,38 @@ nav{
 .settings-menu{
     position: absolute;
     width: 90%;
-    max-width: 350px;
-    height: 410px;
+    max-width: 247px;
+    height: 200px;
     background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgb(0 0 0 / 40%);
     border-radius: 4px;
     overflow: hidden;
     top: 108%;
-    right: 5%;
+    right: 15%;
     max-height: 0;
     transition: max-height 0.3s;
 }
+
 .settings-menu-height{
-    max-height: 150px;
+    max-height: 140px;
 }
 .settings-menu-inner{
-   padding: 20px; 
+   padding: 10px 10px; 
+}
+.settings-menu-inner .user-profile{
+    text-decoration: none;
+    color: #000000;
+    border-radius: 10px;
+    padding: 10px 7px;
+}
+.settings-menu-inner .user-profile:hover{
+    background-color: #efefef;
+}
+.settings-menu-inner .user-profile img{
+    width: 36px;
 }
 /*----User Profile----*/
-h2{
+.user-profile h2{
     margin-left: 2px;
     font-size: 1rem;
 }
@@ -217,21 +230,34 @@ h2{
     border: 0;
     height: 1px;
     background: #9a9a9a;
-    margin: 15px 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 .setting-links{
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 5px 5px;
     display: flex;
-    align-items: cneter;
-    margin: 15px 0;
+    align-items: center;
 }
+
+.setting-links:hover{
+    background-color: #efefef;
+}
+
 .setting-links .settings-icon{
-    width: 38px;
+    width: 36px;
     margin-right: 10px;
-    border-radius: 50%;
 }
 .setting-links a{
     display: flex;
     flex: 1;
+    text-decoration: none;
+    
+}
+.setting-links .setting-links-content{
+    width: 100%;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     text-decoration: none;

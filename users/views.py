@@ -21,7 +21,7 @@ from django.contrib.auth.tokens import default_token_generator
 
 
 def test(request):
-    return render(request, 'users/email_verified.html')
+    return render(request, 'users/password_reset/password_reset_new.html')
 
 def registration_view(request):
     context = {}
@@ -51,7 +51,8 @@ def registration_view(request):
             })  
             email_message = EmailMessage(  
                         "Activate your account on Queendom!", message, to=[email]  
-            )  
+            )
+            email_message.content_subtype = 'html'
             email_message.send()
 
             # message to verify account

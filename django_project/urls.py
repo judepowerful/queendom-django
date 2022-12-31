@@ -33,12 +33,13 @@ from users.views import (
 from blog.views import (
     BlogView,
     profile_view,
+    self_profile_view,
     frontend_view,
 )
 
 urlpatterns = [
     # frontend development
-    path('1', frontend_view, name="frontend"),
+    path('1', test, name="frontend"),
 
     # admin backend
     path('admin/', admin.site.urls),
@@ -55,8 +56,9 @@ urlpatterns = [
     path('logout/', logout_view, name="logout"),
 
     # account managements
+    
+    path('me/', self_profile_view, name="self_profile"),
     path('<str:pk>/', profile_view, name='profile'),
-
     # password reset
     path('accounts/password/reset/', password_reset_view, name='password_reset'),
 

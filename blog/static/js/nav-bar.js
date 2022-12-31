@@ -9,6 +9,14 @@ function settingsMenuToggle(){
   settingsmenu.classList.toggle("settings-menu-height");
 }
 
+document.onclick = function(e){
+  if(settingsmenu.classList.contains("settings-menu-height")){
+    if(e.target.id !== "settings_menu" && e.target.id !== "nav_user_icon"){
+      settingsmenu.classList.toggle("settings-menu-height");
+    }
+  }
+}
+
 // Navigation Menu （铃铛）
 var navigationsmenu = document.querySelector(".navigations-menu");
 
