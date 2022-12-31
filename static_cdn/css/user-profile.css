@@ -1,30 +1,61 @@
 /*User Profile Page Start*/
 
 /*-----------User info Start---------*/
-.user .user-profile{
+.user{
     padding: 20px;
     padding-bottom: 0;
+    margin-bottom: 20px;
 }
 .user .user-profile img{
-    width: 70px;
+    width: 100px;
     border-radius: 50%;
     margin-right: 20px;
 }
 .user h2{
+    margin-left: 0px;
+    margin-bottom: 10px;
     font-size: larger;
 }
 .user i{
-    padding-left: 30px;
-    color: #626262;
-    text-align: baseline;
-    text-decoration: none;
-    font-size: 17px;
+    margin-right: 5px;
 }
+
 .photochange p, .post-user-profile p{
+    color:#626262;
     padding: 0px;
     text-align: left;
 }
-
+.user .user-profile a{
+    margin-bottom: 50px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 7px 16px;
+    background-color:#efefef;
+}
+.user .user-profile a:hover{
+    background-color: #cccccc;
+}
+/*-----------Follow info Start---------*/
+.follow-info{
+    display: flex;
+    margin-top: 30px;
+}
+.follow-info .follower{
+    margin-right: 30px;
+}
+.follow-info a{
+    text-decoration: none;
+    color: #000000;
+}
+.follow-info span{
+    font-weight: bold;
+}
+/*-----------Post and Saved Start---------*/
+.profile-list{
+    display: flex;
+    justify-content: center;
+}
 /*--Friend menu--*/
 .profile-friend-menu{
     position: absolute;

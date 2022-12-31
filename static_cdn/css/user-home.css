@@ -572,7 +572,7 @@ button-bot:hover {
     height: 400px;
     display: block;
     margin: 0 auto;
-    object-fit: cover;
+    object-fit: contain;
 }
 /*------------------------Home Page End-----------------------*/
 

@@ -115,7 +115,7 @@ select{
  }
 
  .file-upload img{
-   object-fit: cover;
+   object-fit: contain;
    width: 470px;
    height: 247px;
    margin-left: auto;
