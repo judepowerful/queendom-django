@@ -247,8 +247,6 @@ hr{
 }
 .activity-icons div{
     width: 0;
-    display: inline-flex;
-    align-items: center;
     margin-right: 65px;
     font-size: 13px;
 }
