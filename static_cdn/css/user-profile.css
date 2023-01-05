@@ -149,25 +149,7 @@
 .choice:hover{
     background-color: #ebc8c8;
 }
-.save-btn {
-    position: absolute;
-    bottom: 12px;
-    right: 25px;
-    padding: 5px 10px;
-    background-color: #b02828;
-    border: none;
-    outline: none;
-    border-radius: 49px;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.5s;
-    box-shadow: 0 2px 5px  rgba(0, 0, 0, 0.6);
-  }
-.save-btn:hover {
-    background-color: #f28f1e;
-}
+
 .block-menu{
     position: absolute;
     width: 50%;
