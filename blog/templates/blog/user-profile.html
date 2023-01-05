@@ -1,12 +1,10 @@
 {% extends 'blog/base.html' %}
 
+{% block title %} Queendom | @{{ user.full_name }} profile {% endblock title %}
+
 {% load static %}
 {% load id_change %}
 {% block content %}
-
-<script>
-    document.title = "Queendom | Your Profile"
-</script>
 
 <!--------Profile Page Start-------->
 
@@ -18,14 +16,14 @@
     <div class="main-content">
         <div class="user">
             <div class="user-profile"> <!--Photo-->
-                <img src="{% static 'img/1.jpeg' %}">
+                <img src="{{ user.profile.profileimg.url }}">
                 <div class="photochange">
-                    <h2>Ray Cai</h2>
+                    <h2>{{ user.full_name }}</h2>
                     <p>Peace & Love</p>
                     <p>Health Studies</p>
                 </div>
                 <!--<a href="#"><i class="fas fa-user-friends" onclick="friendMenuToggle()"></i></a>-->
-                <a href="http://127.0.0.1:5500/Queendom/edit.html"><i class="fa-solid fa-pen"></i>Edit Profile</a>
+                <a href="/profile/edit/"><i class="fa-solid fa-pen"></i>Edit Profile</a>
             </div>
 
             <div class="follow-info">
@@ -46,123 +44,140 @@
         
         <!----Buttons Start---->
         <div class="profile-list">
-            <button class="btn-view-post">1 POST</button>
-            <button class="btn-view-post">SAVED</button>
+
+            <button class="btn-view-post profile-tabs active" onclick="profile_tabs(0)">
+                <span>{{ user_posts.count }}</span>&nbspPOST
+            </button>
+
+            <button class="btn-view-post profile-tabs" onclick="profile_tabs(1)">
+                SAVED
+            </button>
+
         </div>
         <hr> <!--setting menu分割线-->
         <!----Buttons End---->
 
-        <!--------All real posts Start-------->
-        {% for post in user_posts %}
-        <div class="self-post-container" id="{{ post.id }}">
-            <div class="post-row">
-                <div class="user-profile">
-                    <a href="/">
-                        <img src="{{ post.author.profile.profileimg.url }}">
-                    </a>
-                    <div class="post-user-profile">
-                        <p>{{ post.author.full_name }}</p>
-                        <span>{{ post.data_published }}</span>
+        <!-------- User Posts Content-------->
+        <div class="user-post-content profile-tabshow">
+
+            {% for post in user_posts %}
+            <div class="self-post-container" id="{{ post.id }}">
+                <div class="post-row">
+                    <div class="user-profile">
+                        <a href="/">
+                            <img src="{{ post.author.profile.profileimg.url }}">
+                        </a>
+                        <div class="post-user-profile">
+                            <p>{{ post.author.full_name }}</p>
+                            <span>{{ post.data_published }}</span>
+                        </div>
                     </div>
+                    <a href="#"><i class="fas fa-ellipsis-v" onclick="selfmoreMenuToggle()"></i></a>
                 </div>
-                <a href="#"><i class="fas fa-ellipsis-v" onclick="selfmoreMenuToggle()"></i></a>
-            </div>
-
-            
-            <h2 class="post-title">
-                <a href="{{ post.author.netid }}/{{ post.id }}">
-                    {{ post.title }}
-                </a>
-            </h2>
-            
-
-            <p class="post-text">
-                {{ post.body }}
-            </p>
-            
-            {% if post.image_set.count != 0 %}
-            <section id="{{ post.id.hex|to_splider_id }}" class="splide" aria-label="Beautiful Images">
-                <div class="splide__track">
-                        <ul class="splide__list">
-                            {% for image in post.image_set.all %}
-                            <li class="splide__slide">
-                                <img src="{{ image.image.url }}" alt="">
-                            </li>
-                            {% endfor %}
-                        </ul>
-                </div>
-            </section>
-            
-            <script>
-                new Splide( '#{{ post.id.hex|to_splider_id }}', {
-
-                } ).mount();
-            </script>
-            {% endif %}
-
-            <div class="post-bottom">
-                <div class="activity-icons">
-                    <div class="icons">
-                        
-                        {% if request.user.is_authenticated %}
-                        <button id="like-button" value="{{post.id}}">
-                                <i class="fas fa-heart fa-lg like-i 
-                                {% if post.likes|users_liked:request.user.email %}
-                                active
-                                {% endif %}">
+    
+                
+                <h2 class="post-title">
+                    <a href="{{ post.author.netid }}/{{ post.id }}">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                
+    
+                <p class="post-text">
+                    {{ post.body }}
+                </p>
+                
+                {% if post.image_set.count != 0 %}
+                <section id="{{ post.id.hex|to_splider_id }}" class="splide" aria-label="Beautiful Images">
+                    <div class="splide__track">
+                            <ul class="splide__list">
+                                {% for image in post.image_set.all %}
+                                <li class="splide__slide">
+                                    <img src="{{ image.image.url }}" alt="">
+                                </li>
+                                {% endfor %}
+                            </ul>
+                    </div>
+                </section>
+                
+                <script>
+                    new Splide( '#{{ post.id.hex|to_splider_id }}', {
+    
+                    } ).mount();
+                </script>
+                {% endif %}
+    
+                <div class="post-bottom">
+                    <div class="activity-icons">
+                        <div class="icons">
+                            
+                            {% if request.user.is_authenticated %}
+                            <button id="like-button" value="{{post.id}}">
+                                    <i class="fas fa-heart like-i 
+                                    {% if post.likes|users_liked:request.user.email %}
+                                    active
+                                    {% endif %}">
+                                        
+                                        <span class="like_count" id="like_count">
+                                        {% if post.like_count != 0 %}
+                                            {{post.like_count}}
+                                        {% endif %}
+                                        </span>
+                                        
+                                    </i>
+                            </button>
+                            {% else %}
+                            <button id="like-button-inactive" value="{{post.id}}">
+                                <a style="text-decoration: none" href="{% url 'login' %}">
+                                    <i class="fas fa-heart like-i">
                                     
                                     <span class="like_count" id="like_count">
-                                    {% if post.like_count != 0 %}
-                                        {{post.like_count}}
-                                    {% endif %}
                                     </span>
                                     
-                                </i>
-                        </button>
-                        {% else %}
-                        <button id="like-button-inactive" value="{{post.id}}">
-                            <a style="text-decoration: none" href="{% url 'login' %}">
-                                <i class="fas fa-heart like-i">
-                                
-                                <span class="like_count" id="like_count">
-                                </span>
-                                
-                                </i>
-                            </a>
-                        </button>
-                        {% endif %}
+                                    </i>
+                                </a>
+                            </button>
+                            {% endif %}
+                        </div>
+                        <div class="icons">
+                            <button id="fav-button" value="{{post.id}}">
+                                    <i class="fas fa-star"></i>
+                            </button>
+                        </div>
+                        <div class="icons">
+                            <button id="share-button" value="{{post.id}}">
+                                    <i class="fas fa-share"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="icons">
-                        <button id="fav-button" value="{{post.id}}">
-                                <i class="fas fa-star"></i>
-                        </button>
+                    <div class="comment-box">
+                        <input type="text" placeholder="Comment...">
+    
+                        <div class="send-comment">
+                            <button id="comment-button" value="{{post.id}}">
+                                <i class="far fa-paper-plane"></i> <!--Comment-Send Icon-->
+                            </button>
+                        </div>
                     </div>
-                    <div class="icons">
-                        <button id="share-button" value="{{post.id}}">
-                                <i class="fas fa-share"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="comment-box">
-                    <input type="text" placeholder="Comment...">
-
-                    <div class="send-comment">
-                        <button id="comment-button" value="{{post.id}}">
-                            <i class="far fa-paper-plane"></i> <!--Comment-Send Icon-->
-                        </button>
-                    </div>
+                    
                 </div>
                 
             </div>
-            
+            {% endfor %}
         </div>
-        {% endfor %}
-        <!--------All real posts End-------->
+        <!-------- User Post Content End-------->
+
+        <!-------- User Saved Posts Content -------->
+        <div class="user-saved-content profile-tabshow">
+            You haven't save any posts yet.
+        </div>
+        <!-------- User Saved Posts Content End -------->
 
     </div>    
 
     <!--Right side bar-->
     <div class="right-sidebar"></div>
 </div>
+<script src="{% static 'js/user-profile.js' %}"></script>
 <!--------Profile Page Ending-------->
 {% endblock content %}

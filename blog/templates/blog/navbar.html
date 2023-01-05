@@ -70,8 +70,8 @@
         <div class="settings-menu-inner" id="settings_menu">
             {% if request.user.is_authenticated %}
             
-            <a href="{% url 'self_profile' %}" class="user-profile">
-                <img src="{{ request.user.profile.profileimg.url}}" id="settings_menu">
+            <a href="{% url 'blog:self_profile' %}" class="user-profile">
+                <img src="{{ request.user.profile.profileimg.url }}" id="settings_menu">
                 <div id="settings_menu">
                     <h2 id="settings_menu">{{ request.user.full_name }}</h2>
                 </div>

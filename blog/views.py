@@ -12,27 +12,30 @@ from django.http import HttpResponse, JsonResponse
 
 from blog.forms import CreateBlogPostForm
 
+@login_required(login_url='/login/')
+def create_new_post(request):
+    form = CreateBlogPostForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        post = form.save(commit=False)
+
+        # link to user
+        author = Account.objects.filter(email=request.user.email).first()
+        post.author = author
+        
+        # create post models
+        post.save()
+
+        # create image models
+        images = request.FILES.getlist('images')
+        for image in images:
+            Image.objects.create(blogpost=post, image=image)
+    
 
 # Index view for blog
 class BlogView(View):
     def post(self, request):
-        form = CreateBlogPostForm(request.POST or None, request.FILES or None)
-        if form.is_valid():
-            post = form.save(commit=False)
-
-            # link to user
-            author = Account.objects.filter(email=request.user.email).first()
-            post.author = author
-            
-            # create post models
-            post.save()
-
-            # create image models
-            images = request.FILES.getlist('images')
-            for image in images:
-                Image.objects.create(blogpost=post, image=image)
-
-        return redirect('/')
+        create_new_post(request)
+        return redirect(request.path_info)
 
     def get(self, request):
         context = {}
@@ -40,21 +43,35 @@ class BlogView(View):
         context['posts'] = all_posts
         return render(request, 'blog/index.html', context)
 
+class edit_profile_view(View):
+    def post(self, request):
+        return redirect(request.path_info)
+
+    def get(self, request):
+        context = {}
+        return render(request, 'blog/edit-profile.html', context)
 
 # Profile pages for each users
 # @login_required(login_url='/login/')
-def profile_view(request, pk):
-    context = {}
-    user_found = Account.objects.filter(netid=pk).first()
-    if (user_found == None):
-        return HttpResponse("No matching account", content_type='text/plain')
-    else:
-        user_posts = BlogPost.objects.filter(author=user_found).order_by('-data_published')
-        context['user_posts'] = user_posts
-        if(user_found == request.user):
-            return render(request, 'blog/user-profile.html', context)
+class profile_view(View):
+    def post(self, request, pk):
+        create_new_post(request)
+        return redirect(request.path_info)
+
+    def get(self, request, pk):
+        context = {}
+        user_found = Account.objects.filter(netid=pk).first()
+        if (user_found == None):
+            return HttpResponse("No matching account", content_type='text/plain')
         else:
-            return HttpResponse("To see other people profile is still working on process", content_type='text/plain')
+            user_posts = BlogPost.objects.filter(author=user_found).order_by('-data_published')
+            context['user'] = user_found
+            context['user_posts'] = user_posts
+            if(user_found == request.user):
+                return render(request, 'blog/user-profile.html', context)
+            else:
+                return HttpResponse("To see other people profile is still working on process", content_type='text/plain')
+
 
 @login_required(login_url='/login/')
 def self_profile_view(request):

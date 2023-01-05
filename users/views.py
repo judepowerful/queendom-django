@@ -85,7 +85,7 @@ def login_view(request):
 
     user = request.user
     if user.is_authenticated:
-        return redirect("index")
+        return redirect("blog:index")
 
     if request.POST:
         form = AuthenticationForm(request.POST)

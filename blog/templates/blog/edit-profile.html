@@ -1,0 +1,206 @@
+{% extends 'blog/base.html' %}
+
+{% block title %} Queendom | Edit Profile {% endblock title %}
+
+{% load static %}
+{% block content %}
+
+<!-- Edit Profile Page Start-->
+<div class="container">
+    <div class="edit-profile-container">
+        <!--Leftbox Start-->
+        <div class="leftbox">
+            <nav-profile>
+                <a onclick="tabs(0)" class="tab active prevent-select">                    
+                    <i class="fa fa-user"></i>
+                    Edit Profile
+                </a>
+                
+                <a onclick="tabs(1)" class="tab prevent-select">
+                    <i class="fas fa-key"></i>
+                    Change Password
+                </a>
+
+                <a onclick="tabs(2)" class="tab prevent-select">
+                    <i class="fas fa-lock"></i>
+                    Privacy
+                </a>
+
+                <a onclick="tabs(3)" class="tab prevent-select">
+                    <i class="fa fa-question-circle"></i>
+                    Help
+                </a>
+            </nav-profile>
+        </div>
+        <!--Leftbox End-->
+
+        <!--Rightbox Start-->
+        <div class="rightbox">
+            <!--Personal Info-->
+            <div class="profile tabShow">
+                <div class="user-profile"> <!--Photo-->
+                    <aside class="col-name">
+                        <img src="{{ request.user.profile.profileimg.url }}">
+                    </aside>
+                    <div class="photochange">
+                        <h2>{{ request.user.full_name }}</h2>
+                        <a href="#">Change Profile Photo</a>
+                    </div>
+                </div>
+
+                <div class="profile-col">
+                    <aside class="col-name">
+                        <label for="user-fullname">
+                            Full Name
+                        </label>
+                    </aside>
+                    <input type="text" class="input-text" value="{{ request.user.full_name }}">
+                </div>
+
+                <div class="profile-col">
+                    <aside class="col-name">
+                        <label for="user-email">
+                            Email
+                        </label>
+                    </aside>
+                    <input type="text" class="input-text" disabled="disabled" value="{{ request.user.email }}">
+                </div>
+
+                <div class="profile-col">
+                    <aside class="col-name">
+                        <label for="user-bio">
+                            Bio
+                        </label>
+                    </aside>
+                    <textarea type="text" class="input-text">你好</textarea>
+                </div>
+
+                <div class="profile-col">
+                    <aside class="col-name">
+                        <label for="user-gender">
+                            Gender
+                        </label>
+                    </aside>
+                    
+                    <select name="gender" id="gender">
+                        <option value="female">Female</option>
+                        <hr> <!--setting menu分割线-->
+                        <option value="male">Male</option>
+                        <hr> <!--setting menu分割线-->
+                        <option value="prefer not to say">Prefer Not To Say</option>
+                    </select>
+
+                </div>
+
+                <div class="profile-col">
+                    <aside class="col-name">
+                        <label for="user-major">
+                            Major
+                        </label>
+                    </aside>
+                    <input type="text" class="input-text" value="">
+                </div>
+
+                <div class="profile-col">
+                    <aside class="col-name">
+                        <label></label>
+                    </aside>
+                    <button class="save-btn">Save</button>
+                </div>
+            </div>
+
+            <!--Change Password-->
+            <div class="password tabShow">
+                <h1>Change Password</h1> 
+                <h2>Old Password</h2>
+                <input type="text" class="input">
+                <h2>New Password</h2>
+                <input type="text" class="input">
+                <h2>Confirm New Password</h2>
+                <input type="text" class="input">
+                <button class="save-btn">Save</button>
+                <button class="forget-passwordbtn" id="forgot-password-btn">
+                    Forgot Password?
+                    </button>
+            </div>
+
+            <!--Privacy-->
+            <div class="privacy tabShow">
+                <h1>Privacy</h1> 
+                <h2>Blocked List 
+                    <i class="fas fa-angle-down" onclick="blockedMenuToggle()"> </i>
+                </h2> <!--Full Name-->
+
+                <!--Blocked List Menu Start-->
+                <div class="blocked-menu">
+                    <div class="blocked-menu-inner">
+                        <div>
+                            <h2>Jonas</h2>
+                        </div>
+                        <select name="onoff" id="onoff">
+                            <option value="on">On</option>
+                            <option value="off">Off</option>
+                        </select>
+                    </div>
+                    <hr> <!--setting menu分割线-->
+                    <div class="blocked-menu-inner">
+                        <div>
+                            <h2>Jonas</h2>
+                        </div>
+                        <select name="onoff" id="onoff">
+                            <option value="on">On</option>
+                            <option value="off">Off</option>
+                        </select>
+                    </div>
+                    <hr> <!--setting menu分割线-->
+                    <div class="blocked-menu-inner">
+                        <div>
+                            <h2>Jonas</h2>
+                        </div>
+                        <select name="onoff" id="onoff">
+                            <option value="on">On</option>
+                            <option value="off">Off</option>
+                        </select>
+                    </div>
+                    <hr> <!--setting menu分割线-->
+                    <div class="blocked-menu-inner">
+                        <div>
+                            <h2>Jonas</h2>
+                        </div>
+                        <select name="onoff" id="onoff">
+                            <option value="on">On</option>
+                            <option value="off">Off</option>
+                        </select>
+                    </div>
+                </div>
+                <!--Blocked List Menu End-->
+                
+                <button class="save-btn">Save</button>
+            </div>
+
+                <!--Help-->
+                <div class="help tabShow">
+                <h1>Help</h1> 
+                <div class="write-post-container"> <!--Write-->
+                    
+
+                    <div class="post-input-container"> <!--Input-->
+                        <h3>Tell Us Your Needs</h3>
+                        <div class="title-box">
+                            <input type="text" placeholder="TITLE HERE... 0-20 words"> <!--title-->
+                        </div>
+                        <textarea rows="3" placeholder="Post your comments here to help us to improve our development..."></textarea>
+                        <button class="save-btn">SENT</button>
+                        
+                    </div>
+                </div>
+            </div>
+
+        
+        </div>
+        <!--Rightbox End-->
+    </div>
+</div>
+<!--Edit Profile Page End-->
+<script src="{% static 'js/edit-profile.js' %}"></script>
+{% endblock content %}

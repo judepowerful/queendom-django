@@ -24,6 +24,11 @@ body{
     height: 100%;
     background: #ffffff;
 }
+.prevent-select {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
 /*----三栏 Start----*/
 .cover{
     height: 50%;
@@ -89,10 +94,20 @@ h1{
     font-size: 19px;
     cursor: pointer;
     transition: 0.5s;
-  }
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 5px;
+}
+
+.profile-list .active{
+    background-color: #ebc8c8;
+}
+
 .btn-view-post:hover {
     background-color: #ebc8c8;
-  }
+}
 /*---profile Page的选项btn End---*/
 
 /*--Word btn--*/

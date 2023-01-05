@@ -55,10 +55,6 @@ urlpatterns = [
     path('login/', login_view, name="login"),
     path('logout/', logout_view, name="logout"),
 
-    # account managements
-    
-    path('me/', self_profile_view, name="self_profile"),
-    path('<str:pk>/', profile_view, name='profile'),
     # password reset
     path('accounts/password/reset/', password_reset_view, name='password_reset'),
 
@@ -75,6 +71,7 @@ urlpatterns = [
     # path for email verification
     path('activate/<uidb64>/<token>', activate, name='activate'),  
     
+    path('<str:pk>/', profile_view.as_view(), name='profile'),
 ]
 
 
