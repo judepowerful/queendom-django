@@ -159,20 +159,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'noreply.queendom.official@gmail.com'  
 EMAIL_HOST_PASSWORD = 'uvprwhjshrcjodej'  
 
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "console": {"class": "logging.StreamHandler"},
-    },
-    "loggers": {
-        "django": {
-            "handlers": ["console"],
-            "level": "INFO",
-        },
-    }
-}
-
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
