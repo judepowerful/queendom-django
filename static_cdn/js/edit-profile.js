@@ -17,8 +17,12 @@ $(".tab").click(function(){
 
 var x = document.getElementById("identity-status").value;
 if(x === 'current-student'){
-    console.log("current");
-} else {
-    console.log("else");
+
+} else if(x === 'future-student'){
+
+} else if(x === 'faculty-staff'){
+
+} else if(x === 'alumni'){
+    
 }
  
