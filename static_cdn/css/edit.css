@@ -78,7 +78,7 @@ select{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 17px;
+    font-size: 15px;
 }
   
 .input-text::placeholder {
@@ -87,10 +87,6 @@ select{
 
 .input-text:disabled {
     background: #dddddd;
-}
-
-.profile-col select {
-    border-radius: 0px;
 }
 
 .save-btn {

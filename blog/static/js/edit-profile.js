@@ -14,3 +14,11 @@ tabs(0);
 $(".tab").click(function(){
     $(this).addClass("active").siblings().removeClass("active");
 });
+
+var x = document.getElementById("identity-status").value;
+if(x === 'current-student'){
+    console.log("current");
+} else {
+    console.log("else");
+}
+ 
