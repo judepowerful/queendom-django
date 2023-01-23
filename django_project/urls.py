@@ -38,6 +38,7 @@ from blog.views import (
 )
 
 urlpatterns = [
+
     # frontend development
     path('1', test, name="frontend"),
 

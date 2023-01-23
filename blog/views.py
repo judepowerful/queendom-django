@@ -10,7 +10,7 @@ from blog.models import BlogPost, Image
 
 from django.http import HttpResponse, JsonResponse
 
-from blog.forms import CreateBlogPostForm
+from blog.forms import CreateBlogPostForm, FeedbackForm
 
 @login_required(login_url='/login/')
 def create_new_post(request):
@@ -29,7 +29,26 @@ def create_new_post(request):
         images = request.FILES.getlist('images')
         for image in images:
             Image.objects.create(blogpost=post, image=image)
-    
+
+
+@login_required(login_url='/login/')
+def add_feedback(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback = form.save(commit=False)
+
+            # link to user
+            author = Account.objects.filter(email=request.user.email).first()
+            feedback.author = author
+        
+            # create post models
+            feedback.save()
+
+        next = request.POST.get('next', '/')
+        return redirect(next)
+
+
 
 # Index view for blog
 class BlogView(View):

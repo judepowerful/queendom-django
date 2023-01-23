@@ -170,7 +170,7 @@ section {
   margin-bottom: 150px; }
 
 .signup-content {
-  height: fit-content;
+  height: 500px;
   padding-top: 67px;
   padding-bottom: 67px;
   }
@@ -554,3 +554,21 @@ label.valid {
     margin-right: 0px;
     margin-bottom: 10px; } }
 
+.signup-type-container{
+  margin: 10px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.signup-type-btn {
+  font-size: medium;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.signup-type-container .active{
+  font-weight: bold;
+  color: #ab2222;
+}

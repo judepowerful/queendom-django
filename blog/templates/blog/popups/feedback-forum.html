@@ -1,0 +1,42 @@
+
+{% load static %}
+
+<div class="menu-background" id="feedback-forum">
+    <div class="feedback-forum">
+        <div class="close-feedback-btn">
+            <label for="click" class="fas fa-times" onclick="closeFeedbackForum()"></label>
+        </div>
+        <div class="feedback-head">
+            <img src="{% static 'img/logo.png' %}" alt="logo">
+            <div class="feedback-title">
+                <h3>
+                    Feedback
+                </h3>
+            </div>
+        </div>
+
+        <form action="{% url 'blog:add_feedback' %}" method="POST">
+            {% csrf_token %}
+            <div class="feedback-container">
+                <div class="feedback-detail">
+                    <label>
+                        Tell us how can we improve:
+                    </label>
+                    <textarea name="feedback" id="message" rows="8" placeholder="Type here..." required></textarea>
+                </div>
+                
+                <div>
+                    <label>
+                        Will you share this site to your friends?
+                    </label>
+                    <input type="checkbox" name="share">
+                </div>
+
+                
+                <button class="btn" type="submit" id="post-btn">Send</button>
+
+            </div>
+        </form>
+    </div>
+    
+</div>

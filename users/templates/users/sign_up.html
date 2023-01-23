@@ -8,42 +8,66 @@
         <div class="signup-content">
             <div class="signup-form">
                 <h2 class="form-title">Sign up</h2>
+                <div class="signup-type-container">
+                    <button class="signup-type-btn active" id="individual-signup" onclick="signup_tabs(0)">for individual</button>
+                    <button class="signup-type-btn" id="group-signup" onclick="signup_tabs(1)">for group</button>
+                </div>
 
-                <form method="POST" class="register-form" id="signup-form">{% csrf_token %}
-                    <div class = "form-group form-button" id="error-report">
-                        {% if email_confirmation_message %}
-                            <span class='green-message'> 
-                                <i class = "fas fa-check-circle" aria-hidden="true"> </i>
-                                {{ email_confirmation_message }} 
-                            </span>
-                        {% elif signup_error %}
-                            {% for error in signup_error %}
-                                <span class='error-message'>
-                                    <i class="fas fa-circle-xmark" aria-hidden="true"> </i>
-                                    {{ error }} 
+                <hr>
+
+                <div class="signup-tabshow">
+                    <form method="POST" class="register-form" id="signup-form">{% csrf_token %}
+                        <div class = "form-group form-button" id="error-report">
+                            {% if email_confirmation_message %}
+                                <span class='green-message'> 
+                                    <i class = "fas fa-check-circle" aria-hidden="true"> </i>
+                                    {{ email_confirmation_message }} 
                                 </span>
-                            {% endfor %}
-                        {% endif %}
+                            {% elif signup_error %}
+                                {% for error in signup_error %}
+                                    <span class='error-message'>
+                                        <i class="fas fa-circle-xmark" aria-hidden="true"> </i>
+                                        {{ error }} 
+                                    </span>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+    
+                        {% for field in registration_form %}
+            
+                        <div class="form-group">
+                            <label><i class="fas fa-{{ field.field.icon }}"></i></label>
+                            {{field}}
+                        </div>
+            
+                        {% endfor %}
+    
+                        <div class="show-p">
+                            <input type="checkbox" id="showpass"onclick="showPasswordFunction()">
+                            Show Password
+                        </div>
+    
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="signup-tabshow">
+                    <div class = "form-group form-button" id="error-report">
+
                     </div>
 
-                    {% for field in registration_form %}
-        
                     <div class="form-group">
-                        <label><i class="fas fa-{{ field.field.icon }}"></i></label>
-                        {{field}}
+                        <label><i class="fa-solid fa-school-circle-exclamation"></i></label>
+                        <input type="text" placeholder="Invitation Code">
                     </div>
-        
-                    {% endfor %}
+                    <span class='green-message'> 
+                        Please contact us for signing up a group, an invitation code will only be provided after
+                        your group to be authorized.
+                    </span>
+                </div>
 
-                    <div class="show-p">
-                        <input type="checkbox" id="showpass"onclick="showPasswordFunction()">
-                        Show Password
-                    </div>
-
-                    <div class="form-group form-button">
-                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
-                    </div>
-                </form>
             </div>
             
             <div class="signup-image">

@@ -36,8 +36,17 @@ def pre_save_blog_post_receiver(sender, instance, *args, **kwargs):
 pre_save.connect(pre_save_blog_post_receiver, sender=BlogPost)
 
 class Image(models.Model):
-    blogpost = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to=upload_location, null=True, blank=True)
+    blogpost                = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
+    image                   = models.ImageField(upload_to=upload_location, null=True, blank=True)
 
     def __str__(self):
         return str(self.blogpost.author.netid) + " / " + self.blogpost.title + " / " + str(self.blogpost.data_published)
+
+class Feedback(models.Model):
+    author                  = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    feedback                = models.TextField(max_length=5000, null=False, blank=False)
+    share                   = models.BooleanField(null=False, blank=False)
+    date                    = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.author.full_name
