@@ -5,7 +5,8 @@ var createpost_open_btn = document.querySelector(".create-post-icon");
 const body = document.querySelector("body");
 
 var file_upload_area = document.querySelector(".file-upload");
-var delete_img_button = document.getElementById("delete-img-btn")
+var delete_img_button = document.getElementById("delete-img-btn");
+
 
 // open form
 createpost_open_btn.addEventListener('click', ()=>{

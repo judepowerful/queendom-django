@@ -1,0 +1,71 @@
+.feedback-button {
+    margin-right: 25px;
+    height: 40px;
+    border: solid 3px #CCCCCC;
+    background: #ab2222;
+    width: 100px;
+    line-height: 32px;
+    -webkit-transform: rotate(-90deg);
+    font-weight: 600;
+    color: white;
+    transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    text-align: center;
+    font-size: 17px;
+    position: fixed;
+    right: -40px;
+    top: 45%;
+    font-family: "Roboto", helvetica, arial, sans-serif;
+    z-index: 2;
+}
+
+.feedback-forum {
+    border-radius: 5px;
+    width: 30%;
+    background-color: #fff;
+}
+
+.feedback-forum .feedback-head {
+    padding: 20px;
+}
+
+.feedback-forum .feedback-head .feedback-title{
+    text-align: center;
+}
+
+.feedback-forum img {
+    width: 40%;
+    margin-bottom: 10px;
+}
+
+.feedback-forum .feedback-container{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.feedback-container div {
+    padding-bottom: 20px;
+}
+
+.feedback-container div label {
+    padding-bottom: 10px;
+}
+
+.feedback-detail{
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-container textarea{
+    padding: 10px;
+    border-radius: 0.25rem;
+    outline: none;
+    border: none;
+    background: #f3f3f3;
+}
+
+.feedback-container button{
+    align-self: center;
+}
